@@ -1,0 +1,211 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  padding: 22px 5%;
+
+  color: white;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.navbar-scrolled {
+  background-color: #f8f3eb;
+  color: #51202a;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: inherit;
+  text-decoration: none;
+
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.logo-icon {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #d73538;
+}
+
+.logo-icon svg {
+  width: 25px;
+  height: 25px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.nav-link {
+  position: relative;
+
+  color: inherit;
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  padding: 8px 0;
+
+  transition: opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.7;
+}
+
+.nav-link.active::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 2px;
+
+  background: #d73538;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-button,
+.dashboard-button {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: all 0.25s ease;
+}
+
+.nav-button {
+  padding: 10px 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 30px;
+
+  color: inherit;
+}
+
+.navbar-scrolled .nav-button {
+  border-color: #d8c9bf;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-scrolled .nav-button:hover {
+  background: #eee5dc;
+}
+
+
+.dashboard-button {
+  padding: 11px 25px;
+
+  border-radius: 30px;
+
+  background: #551e28;
+  color: white;
+}
+
+.dashboard-button:hover {
+  background: #722c38;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+  .navbar {
+    padding: 18px 5%;
+  }
+
+  .navbar-links {
+    gap: 20px;
+  }
+
+  .navbar-actions {
+    gap: 7px;
+  }
+
+  .nav-button {
+    padding: 8px 15px;
+  }
+
+  .dashboard-button {
+    padding: 9px 15px;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-actions {
+    gap: 6px;
+  }
+
+  .navbar-logo {
+    font-size: 21px;
+  }
+
+  .dashboard-button {
+    display: none;
+  }
+}

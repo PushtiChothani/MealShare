@@ -1,0 +1,103 @@
+.carousel-section {
+  width: 100%;
+  overflow: hidden;
+
+  background: #f7f1e8;
+
+  margin: 0;
+  padding: 55px 0 0;
+}
+
+.carousel-row {
+  width: 100%;
+  overflow: hidden;
+
+  margin: 0 0 22px;
+}
+
+.carousel-row:last-child {
+  margin-bottom: 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: carousel-forward 32s linear infinite;
+}
+
+.carousel-track.reverse {
+  animation: carousel-backward 32s linear infinite;
+}
+
+.carousel-item {
+  position: relative;
+  width: 320px;
+  height: 205px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.05)
+  );
+}
+
+.carousel-item span {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  z-index: 2;
+
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+@keyframes carousel-forward {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes carousel-backward {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@media (max-width: 750px) {
+  .carousel-section {
+    padding: 35px 0;
+  }
+
+  .carousel-item {
+    width: 260px;
+    height: 175px;
+  }
+}
