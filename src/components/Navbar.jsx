@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "../styles/navbar.css";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +19,11 @@ function Navbar() {
   }, []);
 
   return (
-    <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
+    <header
+      className={`navbar ${scrolled ? "navbar-scrolled" : ""} ${
+        location.pathname === "/meals" ? "navbar-meals" : ""
+      }`}
+    >
       <div className="navbar-container">
 
         {/* Logo */}

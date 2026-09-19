@@ -15,6 +15,13 @@
     box-shadow 0.3s ease;
 }
 
+.navbar-meals {
+  position: relative;
+  background-color: #f8f3eb;
+  color: #51202a;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
 .navbar-scrolled {
   background-color: #f8f3eb;
   color: #51202a;
