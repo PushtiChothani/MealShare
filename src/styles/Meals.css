@@ -1,13 +1,24 @@
+.meals-doodle-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background: #f8f1e6;
+}
+
 /* =========================================
    MEALS PAGE
 ========================================= */
 
 .meals-page {
-  position: relative;
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   background: #f8f1e6;
 }
 
@@ -291,3 +302,87 @@
     padding: 0 16px;
   }
 }
+
+
+/* =========================================
+   MEAL CARDS GRID SECTION
+========================================= */
+
+.meals-grid-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 24px 60px 24px;
+  box-sizing: border-box;
+}
+
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 992px) {
+  .meals-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .meals-grid-section {
+    padding: 20px 16px 40px 16px;
+  }
+
+  .meals-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* =========================================
+   NO MEALS FOUND STATE
+========================================= */
+
+.no-meals-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background: #ffffff;
+  border: 1px dashed #ebdcd0;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.no-meals-found h3 {
+  margin: 0 0 10px 0;
+  font-family: Georgia, serif;
+  font-size: 22px;
+  color: #5b2029;
+}
+
+.no-meals-found p {
+  margin: 0 0 20px 0;
+  color: #765f5a;
+  font-size: 14px;
+  max-width: 450px;
+}
+
+.no-meals-found .reset-button {
+  padding: 10px 22px;
+  background: #d93636;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.no-meals-found .reset-button:hover {
+  background: #5b2029;
+}
+
