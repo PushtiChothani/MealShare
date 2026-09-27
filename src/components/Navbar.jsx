@@ -21,7 +21,7 @@ function Navbar() {
   return (
     <header
       className={`navbar ${scrolled ? "navbar-scrolled" : ""} ${
-        location.pathname === "/meals" ? "navbar-meals" : ""
+        location.pathname === "/meals" || location.pathname === "/login" ? "navbar-meals" : ""
       }`}
     >
       <div className="navbar-container">

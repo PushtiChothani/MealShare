@@ -1,0 +1,313 @@
+/* =========================================
+   MEALSHARE LOGIN PAGE STYLES
+   ========================================= */
+
+.login-page-container {
+    min-height: 100vh;
+    background-color: #fffaf5;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 70px 25px 25px;
+    box-sizing: border-box;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 900px;
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 16px 48px rgba(115, 3, 23, 0.408);
+    display: flex;
+    overflow: hidden;
+    border: 1px solid #f2e7dc;
+    min-height: 500px;
+    position: relative;
+}
+
+/* =========================================
+   LEFT SECTION (LOGIN FORM)
+   ========================================= */
+
+.login-left-section {
+    flex: 0.95;
+    padding: 44px 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    position: relative;
+    background-color: #ffffff;
+}
+
+/* White wedge bridges the seam between form and image */
+.login-left-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -44px;
+    width: 70px;
+    height: 100%;
+    background-color: #ffffff;
+    transform: skewX(-8deg);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* PAGE TITLE */
+.login-page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #51202a;
+    margin: 0 0 28px 0;
+    letter-spacing: -0.5px;
+}
+
+/* ROLE TABS */
+.role-tabs-wrapper {
+    margin-bottom: 28px;
+}
+
+.role-tabs {
+    display: flex;
+    background-color: #f8f3eb;
+    padding: 5px;
+    border-radius: 12px;
+    gap: 5px;
+    border: 1px solid #eee2d5;
+}
+
+.role-tab-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: #51202a;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.role-tab-btn.active {
+    background-color: #551e28;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(85, 30, 40, 0.22);
+}
+
+.role-tab-btn:hover:not(.active) {
+    background-color: #eee4d9;
+}
+
+.role-description {
+    font-size: 12px;
+    color: #7a6058;
+    margin-top: 8px;
+    line-height: 1.45;
+    padding: 0 2px;
+}
+
+/* FORM INPUTS — underline style, no box */
+.login-form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 28px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #7a6058;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.label-with-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    width: 72%;
+}
+
+.label-with-forgot label {
+    margin-bottom: 0;
+}
+
+.forgot-password-link {
+    font-size: 12px;
+    color: #d73538;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+    color: #551e28;
+}
+
+/* Underline-only input */
+.input-wrapper input {
+    width: 72%;
+    padding: 8px 0;
+    border: none;
+    border-bottom: 1.5px solid #d8c9bf;
+    border-radius: 0;
+    font-size: 15px;
+    color: #2d2d2d;
+    background: transparent;
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.input-wrapper input::placeholder {
+    color: #b8a8a0;
+    font-size: 14px;
+}
+
+.input-wrapper input:focus {
+    border-bottom-color: #551e28;
+    box-shadow: none;
+    background: transparent;
+}
+
+/* LOGIN BUTTON — smaller centered pill */
+.login-submit-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 11px 44px;
+    background-color: #551e28;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(85, 30, 40, 0.25);
+    letter-spacing: 0.3px;
+}
+
+.login-submit-btn:hover {
+    background-color: #722c38;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(85, 30, 40, 0.32);
+}
+
+.login-submit-btn:active {
+    transform: translateY(0);
+}
+
+/* SIGN UP LINK */
+.signup-prompt {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 13px;
+    color: #7a6058;
+}
+
+.signup-link {
+    color: #d73538;
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 4px;
+    transition: color 0.2s ease;
+}
+
+.signup-link:hover {
+    color: #551e28;
+    text-decoration: underline;
+}
+
+/* =========================================
+   RIGHT SECTION — TRIANGLE CLIP + RED OVERLAY
+   Top-right triangle: left edge is a steep diagonal
+   so the image fills a triangular wedge on the right.
+   ========================================= */
+
+.login-right-section {
+    flex: 1.4;
+    position: relative;
+    overflow: hidden;
+    /* Triangle: top-left corner pulled far right, bottom-left is flush */
+    clip-path: polygon(22% 0%, 100% 0%, 100% 100%, 0% 100%);
+    background-color: #551e28;
+    min-height: 500px;
+}
+
+.right-section-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Red tint overlay */
+.right-section-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(150deg,
+            rgba(114, 44, 56, 0.70) 0%,
+            rgba(183, 28, 28, 0.40) 55%,
+            rgba(85, 30, 40, 0.62) 100%);
+    z-index: 1;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+    .login-card {
+        flex-direction: column-reverse;
+        max-width: 480px;
+    }
+
+    .login-right-section {
+        min-height: 200px;
+        clip-path: none;
+    }
+
+    .login-left-section::after {
+        display: none;
+    }
+
+    .login-left-section {
+        padding: 36px 32px;
+    }
+}
+
+@media (max-width: 540px) {
+    .login-page-container {
+        padding: 90px 14px 30px;
+    }
+
+    .login-left-section {
+        padding: 28px 20px;
+    }
+
+    .role-tab-btn {
+        padding: 9px 10px;
+        font-size: 13px;
+    }
+
+    .login-page-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+}
