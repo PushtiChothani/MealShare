@@ -1,5 +1,5 @@
 import "../styles/cart.css";
-import { X, ShoppingBag, Trash2, MapPin, Plus, Minus, CheckCircle, AlertTriangle } from "lucide-react";
+import { X, ShoppingBag, Trash2, MapPin, Phone, Plus, Minus, CheckCircle, AlertTriangle } from "lucide-react";
 import { useState } from "react";
 
 function CartModal({
@@ -108,9 +108,20 @@ function CartModal({
 
                       <h4 className="cart-item-title">{item.name}</h4>
 
-                      <div className="cart-item-location">
-                        <MapPin size={13} className="pin-icon" />
-                        <span>{item.distance} • Vadodara</span>
+                      {/* Pickup address & contact */}
+                      <div className="cart-item-pickup">
+                        <div className="cart-item-pickup-row">
+                          <MapPin size={12} className="pickup-icon" />
+                          <span>{item.address || `${item.distance} • Vadodara`}</span>
+                        </div>
+                        {item.phone && (
+                          <div className="cart-item-pickup-row">
+                            <Phone size={12} className="pickup-icon" />
+                            <a href={`tel:${item.phone}`} className="cart-item-phone">
+                              {item.phone}
+                            </a>
+                          </div>
+                        )}
                       </div>
 
                       {/* Stock limit notice */}
@@ -184,15 +195,6 @@ function CartModal({
         {/* FOOTER */}
         {!isSuccess && cartItems.length > 0 && (
           <div className="cart-modal-footer">
-            {/* Pickup Location Summary */}
-            <div className="cart-location-summary">
-              <MapPin size={16} className="loc-summary-icon" />
-              <div className="loc-summary-text">
-                <span className="loc-label">Primary Pickup Location</span>
-                <span className="loc-value">Vadodara Surplus Rescue Center, Gujarat</span>
-              </div>
-            </div>
-
             {/* Total Row */}
             <div className="cart-total-row">
               <span className="total-label">Total Amount</span>
