@@ -23,6 +23,13 @@
     border: 1px solid #f2e7dc;
     min-height: 500px;
     position: relative;
+    animation: loginEntrance 0.7s ease forwards;
+}
+
+@keyframes loginEntrance {
+    0%   { opacity: 0; transform: perspective(1200px) rotateY(80deg); }
+    65%  { opacity: 1; transform: perspective(1200px) rotateY(-8deg); }
+    100% { opacity: 1; transform: perspective(1200px) rotateY(0deg); }
 }
 
 /* =========================================
