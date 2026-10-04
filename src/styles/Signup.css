@@ -1,0 +1,391 @@
+/* =========================================
+   SIGNUP PAGE
+========================================= */
+
+.signup-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: -50px 25px 25px;
+    box-sizing: border-box;
+    background: #fbf5ec;
+}
+
+
+/* =========================================
+   MAIN CONTAINER — three columns: image | form | or+social
+========================================= */
+
+.signup-container {
+    width: 100%;
+    max-width: 1020px;
+    display: flex;
+    background: #ffffff;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 18px 48px rgba(115, 3, 24, 0.34);
+    animation: signupEntrance 0.7s ease forwards;
+    /* Limit height so it always fits viewport */
+    max-height: calc(100vh - 110px);
+}
+
+@keyframes signupEntrance {
+    0% {
+        opacity: 0;
+        transform: perspective(1200px) rotateY(-80deg);
+    }
+
+    65% {
+        opacity: 1;
+        transform: perspective(1200px) rotateY(8deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: perspective(1200px) rotateY(0deg);
+    }
+}
+
+
+/* =========================================
+   LEFT — IMAGE: parallelogram shape
+   Gives image section 50% width so full food-flow diagram is visible.
+========================================= */
+
+.signup-image-section {
+    width: 53%;
+    flex-shrink: 0;
+    position: relative;
+    background: #FFF47A;
+    clip-path: polygon(0% 0%, 100% 0%, 88% 100%, 0% 100%);
+    z-index: 2;
+    min-height: 500px;
+}
+
+.signup-role-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.3s ease;
+}
+
+.signup-role-image.donor-image {
+    object-fit: contain;
+    object-position: 40% center;
+    transform: scale(0.91) translateX(-18px);
+}
+
+.signup-role-image.receiver-image {
+    object-fit: cover;
+    object-position: center;
+}
+
+.signup-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(150deg,
+            rgba(114, 44, 56, 0.20) 0%,
+            rgba(183, 28, 28, 0.10) 55%,
+            rgba(85, 30, 40, 0.18) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/* =========================================
+   MIDDLE — FORM
+   Slightly narrower form section extending smoothly under slant.
+========================================= */
+
+.signup-form-section {
+    flex: 1;
+    padding: 28px 36px 28px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+    background-color: #ffffff;
+    margin-left: -50px;
+}
+
+/* No ::before wedge needed — container overflow:hidden handles the edge */
+
+.signup-form-section h1 {
+    margin: 0 0 4px;
+    color: #5b2029;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+}
+
+.signup-subtitle {
+    margin: 0 0 16px;
+    color: #806b65;
+    font-size: 13px;
+}
+
+
+/* ROLE SELECTOR */
+.signup-role-selector {
+    display: flex;
+    height: 42px;
+    margin-bottom: 18px;
+    padding: 4px;
+    background: #f8f1e8;
+    border: 1px solid #eadbd0;
+    border-radius: 11px;
+}
+
+.signup-role-selector button {
+    flex: 1;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #5b2029;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.22s ease;
+}
+
+.signup-role-selector button:hover {
+    background: #f1e3d8;
+}
+
+.signup-role-selector button.active-role {
+    background: #5b2029;
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(91, 32, 41, 0.2);
+}
+
+
+/* FORM FIELDS — single column, underline style */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.signup-input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-input-group label {
+    margin-bottom: 4px;
+    color: #5b2029;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.signup-input-group input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 36px;
+    padding: 0 2px;
+    border: none;
+    border-bottom: 1.5px solid #d9c9bd;
+    outline: none;
+    background: transparent;
+    color: #4c2a2d;
+    font-size: 14px;
+    transition: border-color 0.22s ease;
+}
+
+.signup-input-group input:focus {
+    border-bottom-color: #e53935;
+}
+
+.signup-input-group input::placeholder {
+    color: #b4a39c;
+}
+
+
+/* SIGNUP BUTTON */
+.signup-button {
+    display: block;
+    margin: 6px auto 0;
+    padding: 11px 44px;
+    border: none;
+    border-radius: 30px;
+    background: #5b2029;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    box-shadow: 0 4px 16px rgba(91, 32, 41, 0.25);
+    letter-spacing: 0.3px;
+}
+
+.signup-button:hover {
+    background: #7a2935;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(91, 32, 41, 0.22);
+}
+
+
+/* ALREADY HAVE ACCOUNT */
+.already-account {
+    margin: 12px 0 0;
+    text-align: center;
+    color: #806b65;
+    font-size: 13px;
+}
+
+.already-account a {
+    margin-left: 4px;
+    color: #e53935;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.already-account a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   RIGHT — VERTICAL OR + SOCIAL ICONS
+   Matches inspiration: vertical line, OR in middle,
+   three circular icon buttons stacked below
+========================================= */
+
+.signup-or-section {
+    width: 100px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #fdf8f3;
+}
+
+/* Left column — vertical line with OR */
+.or-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    padding: 32px 0;
+}
+
+.or-line {
+    flex: 1;
+    width: 1px;
+    background: #e0cfc7;
+}
+
+.or-text {
+    padding: 10px 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: #6a615e;
+    letter-spacing: 1px;
+}
+
+/* Right column — Google button centered */
+.signup-social-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px 0 6px;
+}
+
+.social-icon-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid #e0cfc7;
+    background: #ffffff;
+    color: #5b2029;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(91, 32, 41, 0.08);
+}
+
+.social-icon-btn:hover {
+    background: #5b2029;
+    color: #ffffff;
+    border-color: #5b2029;
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+    .signup-container {
+        flex-direction: column;
+        max-height: none;
+    }
+
+    .signup-image-section {
+        width: 100%;
+        height: 200px;
+        clip-path: none;
+        margin-right: 0;
+    }
+
+    .signup-form-section {
+        padding: 32px 40px;
+    }
+
+    .signup-or-section {
+        width: 100%;
+        flex-direction: row;
+        padding: 0;
+        border-left: none;
+        border-top: 1px solid #f0e4d8;
+        height: 60px;
+    }
+
+    .or-divider {
+        flex-direction: row;
+        padding: 0 16px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .or-line {
+        flex: 1;
+        width: auto;
+        height: 1px;
+    }
+
+    .signup-social-icons {
+        display: none;
+    }
+}
+
+@media (max-width: 540px) {
+    .signup-page {
+        padding: 80px 12px 24px;
+    }
+
+    .signup-form-section {
+        padding: 24px 20px;
+    }
+
+    .signup-form-section h1 {
+        font-size: 24px;
+    }
+}
