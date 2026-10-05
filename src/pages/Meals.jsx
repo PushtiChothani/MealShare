@@ -1,8 +1,8 @@
-import "../styles/Meals.css";
+import "./home/Meals.css";
 import { useState } from "react";
-import FilterBar from "../components/FilterBar";
-import MealCard from "../components/MealCard";
-import CartModal from "../components/CartModal";
+import FilterBar from "./home/components/FilterBar";
+import MealCard from "./home/components/MealCard";
+import CartModal from "./home/components/CartModal";
 
 const sampleMeals = [
   {

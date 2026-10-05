@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import LoginFormInputs from "../components/LoginFormInputs";
-import LoginButton from "../components/LoginButton";
-import SignUpLink from "../components/SignUpLink";
-import "../styles/login.css";
+import LoginFormInputs from "./home/components/LoginFormInputs";
+import LoginButton from "./home/components/LoginButton";
+import SignUpLink from "./home/components/SignUpLink";
+import "./home/login.css";
 
 function Login() {
   const [role, setRole] = useState("donors");

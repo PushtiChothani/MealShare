@@ -1,4 +1,4 @@
-import "../styles/MealCard.css";
+import "../MealCard.css";
 import { useState } from "react";
 import { Check, AlertCircle } from "lucide-react";
 

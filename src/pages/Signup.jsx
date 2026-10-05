@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Signup.css";
+import "./home/Signup.css";
 
 function Signup() {
     const [role, setRole] = useState("donor");
