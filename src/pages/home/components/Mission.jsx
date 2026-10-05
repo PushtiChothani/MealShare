@@ -1,6 +1,6 @@
-import "../styles/mission.css";
+import "../mission.css";
 
-import missionImage from "../assets/images/carousel_nourishing_bowls.jpg";
+import missionImage from "../../../assets/images/carousel_nourishing_bowls.jpg";
 
 function Mission() {
   return (

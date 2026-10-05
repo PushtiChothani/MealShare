@@ -1,0 +1,158 @@
+.our-impact {
+  width: 100%;
+  background: #f7f1e8;
+  padding: 0 0 70px;
+}
+
+.our-impact-container {
+  width: 90%;
+  max-width: 1250px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 250px 1fr;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background: #3b0d14;
+  color: #ffffff;
+}
+
+.our-impact-intro {
+  padding: 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.impact-leaf {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #a93c4d;
+  border-radius: 50%;
+
+  color: #f3b2b8;
+
+  font-size: 28px;
+}
+
+.our-impact-intro h2 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 23px;
+  font-weight: 400;
+}
+
+.our-impact-intro p {
+  margin: 6px 0 0;
+
+  color: #d8c4b9;
+
+  font-size: 12px;
+}
+
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.impact-stat {
+  min-height: 145px;
+
+  padding: 25px 22px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.impact-stat:last-child {
+  border-right: 0;
+}
+
+.impact-stat-icon {
+  width: 34px;
+  height: 34px;
+
+  margin-bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #a93c4d;
+  border-radius: 50%;
+
+  color: #f3b2b8;
+
+  font-size: 15px;
+}
+
+.impact-stat strong {
+  display: block;
+
+  color: #ffffff;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.impact-stat span {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #d8c4b9;
+
+  font-size: 12px;
+}
+
+@media (max-width: 1000px) {
+  .our-impact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .our-impact-intro {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+@media (max-width: 650px) {
+  .our-impact {
+    padding-bottom: 50px;
+  }
+
+  .impact-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .impact-stat:nth-child(2) {
+    border-right: 0;
+  }
+
+  .impact-stat:nth-child(3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .impact-stat:nth-child(4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}

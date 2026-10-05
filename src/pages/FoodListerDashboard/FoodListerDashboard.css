@@ -1,0 +1,1873 @@
+/* =========================================================
+   MEALSHARE — FOOD LISTER DASHBOARD
+   TOP NAVIGATION VERSION
+========================================================= */
+
+.food-lister-dashboard {
+  min-height: 100vh;
+
+  width: 100%;
+
+  background: #f7f1e8;
+
+  color: #3b1017;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN
+   Navbar is handled globally by App.jsx.
+   This spacing keeps dashboard content below it.
+========================================================= */
+
+.food-lister-main {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding:
+    105px
+    42px
+    50px;
+
+  max-width: 1600px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   TOP DASHBOARD HEADER
+========================================================= */
+
+.food-lister-topbar {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 30px;
+}
+
+.food-lister-welcome {
+  min-width: 0;
+}
+
+.food-lister-welcome > span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #745f60;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 20px;
+}
+
+.food-lister-welcome h1 {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 0;
+
+  color: #4b1018;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(42px, 4vw, 61px);
+
+  font-weight: 500;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+}
+
+.food-lister-welcome h1 i {
+  color: #ef5361;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 44px;
+
+  font-style: normal;
+
+  transform: rotate(-25deg);
+}
+
+.food-lister-welcome p {
+  margin: 12px 0 0;
+
+  color: #806d6e;
+
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   DASHBOARD HEADER ACTIONS
+========================================================= */
+
+.food-lister-topbar-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding-top: 2px;
+}
+
+.food-lister-search {
+  width: 300px;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 17px;
+
+  border:
+    1px solid
+    rgba(81, 32, 42, 0.14);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  box-sizing: border-box;
+}
+
+.food-lister-search > span {
+  color: #7d1f2a;
+
+  font-size: 24px;
+}
+
+.food-lister-search input {
+  width: 100%;
+
+  border: 0;
+
+  outline: 0;
+
+  background: transparent;
+
+  color: #3b1017;
+
+  font-size: 12px;
+}
+
+.food-lister-search input::placeholder {
+  color: #9c8989;
+}
+
+.food-lister-notification {
+  position: relative;
+
+  width: 48px;
+
+  height: 48px;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid
+    rgba(81, 32, 42, 0.1);
+
+  border-radius: 50%;
+
+  background: #fffaf5;
+
+  color: #4b1018;
+
+  font-size: 21px;
+
+  cursor: pointer;
+}
+
+.food-lister-notification span {
+  position: absolute;
+
+  top: 9px;
+
+  right: 9px;
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #e12637;
+}
+
+.food-lister-partner-profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 210px;
+}
+
+.food-lister-partner-avatar {
+  width: 50px;
+
+  height: 50px;
+
+  display: grid;
+
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border:
+    2px solid
+    #fff;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #8d4b23,
+      #e5a85b
+    );
+
+  color: #fff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 3px 12px
+    rgba(48, 9, 15, 0.12);
+}
+
+.food-lister-partner-profile > div:nth-child(2) {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  flex: 1;
+}
+
+.food-lister-partner-profile strong {
+  color: #3b1017;
+
+  font-size: 14px;
+}
+
+.food-lister-partner-profile small {
+  color: #806d6e;
+
+  font-size: 10px;
+}
+
+.food-lister-partner-profile > span {
+  color: #5c2029;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.food-lister-stat-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.food-lister-stat {
+  position: relative;
+
+  min-height: 145px;
+
+  display: flex;
+
+  align-items: stretch;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(81, 32, 42, 0.07);
+
+  border-radius: 17px;
+
+  box-shadow:
+    0 8px 25px
+    rgba(48, 9, 15, 0.045);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.food-lister-stat:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 30px
+    rgba(48, 9, 15, 0.09);
+}
+
+.food-lister-stat.listed {
+  background: #fae5e2;
+}
+
+.food-lister-stat.rescued {
+  background: #eaf2df;
+}
+
+.food-lister-stat.saved {
+  background: #f6eadc;
+}
+
+.food-lister-stat.preparing {
+  background: #f5eadb;
+}
+
+.food-lister-stat-text {
+  position: relative;
+
+  z-index: 2;
+
+  width: 62%;
+
+  padding:
+    18px
+    0
+    14px
+    20px;
+}
+
+.food-lister-stat-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #42151c;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.food-lister-stat-icon {
+  width: 35px;
+
+  height: 35px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.42);
+
+  font-size: 17px;
+}
+
+.food-lister-stat-text > strong {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #3b1017;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 38px;
+
+  font-weight: 500;
+
+  line-height: 1;
+}
+
+.food-lister-stat-text p {
+  margin: 8px 0 0;
+
+  color: #786667;
+
+  font-size: 9px;
+}
+
+.food-lister-stat-text p b {
+  color: #29934c;
+}
+
+.food-lister-stat-image {
+  position: absolute;
+
+  right: -2px;
+
+  bottom: -2px;
+
+  width: 47%;
+
+  height: 90%;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: flex-end;
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      black 28%
+    );
+}
+
+.food-lister-stat-image img {
+  width: 145px;
+
+  height: 125px;
+
+  object-fit: cover;
+
+  border-radius:
+    50% 0 0 0;
+
+  filter: saturate(1.08);
+
+  transform: scale(1.12);
+}
+
+.food-lister-stat.preparing
+.food-lister-stat-image img {
+  width: 165px;
+
+  height: 145px;
+
+  border-radius:
+    50% 0 0 0;
+}
+
+
+/* =========================================================
+   CONTENT GRID
+========================================================= */
+
+.food-lister-content-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    385px;
+
+  gap: 20px;
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   ACTIVE LISTINGS
+========================================================= */
+
+.food-lister-active-card {
+  min-width: 0;
+
+  padding:
+    22px
+    18px
+    18px;
+
+  border:
+    1px solid
+    rgba(81, 32, 42, 0.07);
+
+  border-radius: 18px;
+
+  background: #fffdf9;
+
+  box-shadow:
+    0 10px 28px
+    rgba(48, 9, 15, 0.045);
+}
+
+.food-lister-section-heading {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+.food-lister-heading-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.food-lister-heading-icon {
+  width: 38px;
+
+  height: 38px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #f8e3e1;
+
+  color: #8a202c;
+
+  font-size: 18px;
+}
+
+.food-lister-section-heading h2 {
+  margin: 0;
+
+  color: #3b1017;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 26px;
+
+  font-weight: 500;
+}
+
+.food-lister-section-heading p {
+  margin:
+    5px
+    0
+    0
+    48px;
+
+  color: #806d6e;
+
+  font-size: 11px;
+}
+
+.food-lister-outline-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding:
+    10px
+    16px;
+
+  border:
+    1px solid
+    #d8aeb2;
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: #681722;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.food-lister-outline-button span {
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   LISTING GRID
+========================================================= */
+
+.food-lister-listings-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+.food-lister-listing-card {
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(81, 32, 42, 0.09);
+
+  border-radius: 14px;
+
+  background: #fff;
+
+  box-shadow:
+    0 5px 16px
+    rgba(48, 9, 15, 0.035);
+}
+
+.food-lister-listing-image {
+  position: relative;
+
+  height: 143px;
+
+  overflow: hidden;
+}
+
+.food-lister-listing-image img {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.4s ease;
+}
+
+.food-lister-listing-card:hover
+.food-lister-listing-image img {
+  transform: scale(1.05);
+}
+
+.food-lister-left-badge,
+.food-lister-active-badge {
+  position: absolute;
+
+  top: 9px;
+
+  padding:
+    6px
+    10px;
+
+  border-radius: 999px;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+.food-lister-left-badge {
+  left: 9px;
+
+  background:
+    rgba(255, 250, 246, 0.96);
+
+  color: #741b27;
+}
+
+.food-lister-active-badge {
+  right: 9px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  background:
+    rgba(249, 255, 247, 0.95);
+
+  color: #263d2b;
+}
+
+.food-lister-active-badge i {
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #1cab55;
+}
+
+.food-lister-listing-body {
+  padding:
+    10px
+    10px
+    11px;
+}
+
+.food-lister-listing-body h3 {
+  margin: 0;
+
+  color: #42131a;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 19px;
+
+  font-weight: 500;
+}
+
+.food-lister-listing-description {
+  min-height: 31px;
+
+  margin:
+    4px
+    0
+    9px;
+
+  color: #7d6b6b;
+
+  font-size: 10px;
+
+  line-height: 1.35;
+}
+
+.food-lister-listing-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.food-lister-listing-info span,
+.food-lister-listing-info strong {
+  color: #745c5d;
+
+  font-size: 10px;
+
+  font-weight: 500;
+}
+
+.food-lister-listing-info strong {
+  color: #50151d;
+
+  font-weight: 700;
+}
+
+.food-lister-listing-buttons {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    50px;
+
+  gap: 8px;
+
+  margin-top: 11px;
+}
+
+.food-lister-listing-buttons button {
+  height: 34px;
+
+  border:
+    1px solid
+    #e0c8c6;
+
+  border-radius: 10px;
+
+  background: #fffdfb;
+
+  color: #4f151d;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.food-lister-listing-buttons
+button:first-child:hover {
+  background: #f8e9e7;
+}
+
+.food-lister-listing-buttons
+button:last-child {
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   RIGHT COLUMN
+========================================================= */
+
+.food-lister-right-column {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.food-lister-side-card {
+  border:
+    1px solid
+    rgba(81, 32, 42, 0.07);
+
+  border-radius: 17px;
+
+  background: #fffdf9;
+
+  box-shadow:
+    0 10px 28px
+    rgba(48, 9, 15, 0.045);
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.quick-actions-card {
+  padding: 16px;
+}
+
+.food-lister-side-heading {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 14px;
+}
+
+.food-lister-side-heading > div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.food-lister-side-heading > span,
+.food-lister-side-heading > div > span {
+  width: 35px;
+
+  height: 35px;
+
+  display: grid;
+
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #f8e4e0;
+
+  color: #841f2b;
+
+  font-size: 17px;
+}
+
+.food-lister-side-heading h2 {
+  margin: 0;
+
+  color: #45131a;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 19px;
+
+  font-weight: 500;
+}
+
+.food-lister-create-button,
+.food-lister-manage-button {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  height: 48px;
+
+  padding: 0 15px;
+
+  border-radius: 13px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+.food-lister-create-button {
+  border: 0;
+
+  background: #7d1f2a;
+
+  color: #fff;
+
+  box-shadow:
+    0 8px 16px
+    rgba(125, 31, 42, 0.18);
+}
+
+.food-lister-create-button > span,
+.food-lister-manage-button > span {
+  width: 24px;
+
+  height: 24px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  font-size: 16px;
+}
+
+.food-lister-create-button > span {
+  background:
+    rgba(255, 255, 255, 0.18);
+}
+
+.food-lister-create-button b,
+.food-lister-manage-button b {
+  margin-left: auto;
+
+  font-size: 17px;
+}
+
+.food-lister-manage-button {
+  margin-top: 9px;
+
+  border:
+    1px solid
+    #dfc1bf;
+
+  background: #fff8f4;
+
+  color: #55161f;
+}
+
+
+/* =========================================================
+   WEEKLY RESCUE TREND
+========================================================= */
+
+.trend-card {
+  padding: 16px;
+}
+
+.trend-card
+.food-lister-side-heading {
+  margin-bottom: 9px;
+}
+
+.trend-card
+.food-lister-side-heading button {
+  padding:
+    8px
+    11px;
+
+  border:
+    1px solid
+    #ead5d0;
+
+  border-radius: 999px;
+
+  background: #fffaf6;
+
+  color: #5d3539;
+
+  font-size: 9px;
+
+  cursor: pointer;
+}
+
+.food-lister-trend-summary {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin:
+    2px
+    0
+    8px;
+}
+
+.food-lister-trend-summary > strong {
+  color: #49131b;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 35px;
+
+  font-weight: 500;
+}
+
+.food-lister-trend-summary > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.food-lister-trend-summary span {
+  color: #806d6e;
+
+  font-size: 10px;
+}
+
+.food-lister-trend-summary b {
+  color: #26964c;
+
+  font-size: 9px;
+}
+
+.food-lister-chart {
+  height: 105px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-around;
+
+  padding:
+    8px
+    4px
+    0;
+
+  border-top:
+    1px solid
+    rgba(81, 32, 42, 0.08);
+}
+
+.food-lister-chart-column {
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  gap: 6px;
+
+  min-width: 24px;
+}
+
+.food-lister-chart-bar {
+  width: 24px;
+
+  border-radius:
+    5px
+    5px
+    0
+    0;
+
+  background: #c98b91;
+
+  transition:
+    height 0.3s ease,
+    background 0.2s ease;
+}
+
+.food-lister-chart-column:nth-child(5)
+.food-lister-chart-bar {
+  background: #a9283c;
+}
+
+.food-lister-chart-column span {
+  color: #806d6e;
+
+  font-size: 8px;
+}
+
+
+/* =========================================================
+   RECENT ACTIVITY
+========================================================= */
+
+.activity-card {
+  padding: 16px;
+}
+
+.activity-card
+.food-lister-side-heading {
+  margin-bottom: 5px;
+}
+
+.activity-card
+.food-lister-side-heading button {
+  padding:
+    8px
+    11px;
+
+  border:
+    1px solid
+    #ead5d0;
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: #641a24;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.food-lister-activity-list {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.food-lister-activity {
+  display: grid;
+
+  grid-template-columns:
+    38px
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    10px
+    0;
+
+  border-top:
+    1px solid
+    rgba(81, 32, 42, 0.08);
+}
+
+.food-lister-activity:first-child {
+  border-top: 0;
+}
+
+.food-lister-activity-icon {
+  width: 36px;
+
+  height: 36px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #f8e3e0;
+
+  color: #8a202c;
+
+  font-size: 14px;
+}
+
+.food-lister-activity-icon.success {
+  background: #e6f1e4;
+
+  color: #258b4a;
+}
+
+.food-lister-activity-icon.impact {
+  background: #f8e3e0;
+
+  color: #9c1f31;
+}
+
+.food-lister-activity > div:nth-child(2) {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.food-lister-activity strong {
+  color: #42131a;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+.food-lister-activity > div:nth-child(2) span {
+  overflow: hidden;
+
+  color: #806d6e;
+
+  font-size: 9px;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.food-lister-activity time {
+  color: #907d7d;
+
+  font-size: 8px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1250px) {
+
+  .food-lister-main {
+    padding-left: 28px;
+
+    padding-right: 28px;
+  }
+
+  .food-lister-topbar {
+    flex-direction: column;
+  }
+
+  .food-lister-topbar-actions {
+    width: 100%;
+  }
+
+  .food-lister-search {
+    flex: 1;
+  }
+
+  .food-lister-content-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      330px;
+  }
+}
+
+
+@media (max-width: 1050px) {
+
+  .food-lister-stat-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .food-lister-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-lister-right-column {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .activity-card {
+    grid-column: span 2;
+  }
+}
+
+
+@media (max-width: 850px) {
+
+  .food-lister-main {
+    padding:
+      95px
+      20px
+      40px;
+  }
+
+  .food-lister-listings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-lister-listing-image {
+    height: 210px;
+  }
+
+  .food-lister-right-column {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-card {
+    grid-column: auto;
+  }
+
+  .food-lister-topbar-actions {
+    flex-wrap: wrap;
+  }
+
+  .food-lister-search {
+    width: 100%;
+
+    flex-basis: 100%;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .food-lister-main {
+    padding:
+      90px
+      16px
+      40px;
+  }
+
+  .food-lister-welcome h1 {
+    font-size: 40px;
+  }
+
+  .food-lister-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-lister-section-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .food-lister-outline-button {
+    align-self: flex-start;
+  }
+
+  .food-lister-partner-profile {
+    min-width: 0;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .food-lister-welcome h1 {
+    font-size: 34px;
+  }
+
+  .food-lister-stat {
+    min-height: 135px;
+  }
+
+  .food-lister-stat-text {
+    padding-left: 16px;
+  }
+
+  .food-lister-listing-image {
+    height: 180px;
+  }
+
+  .food-lister-activity {
+    grid-template-columns:
+      38px
+      minmax(0, 1fr);
+  }
+
+  .food-lister-activity time {
+    grid-column: 2;
+
+    justify-self: start;
+  }
+}
+/* =========================================================
+   FINAL FIX — DASHBOARD AFTER SIDEBAR REMOVAL
+========================================================= */
+
+/* Remove all leftover sidebar effects */
+
+.food-lister-sidebar {
+  display: none !important;
+}
+
+
+/* Dashboard itself */
+
+.food-lister-dashboard {
+  width: 100% !important;
+  min-height: calc(100vh - 72px) !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: block !important;
+}
+
+
+/* Main dashboard content */
+
+.food-lister-main {
+  width: 100% !important;
+
+  margin: 0 !important;
+
+  padding: 34px 42px 50px !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/* Top section */
+
+.food-lister-topbar {
+  width: 100% !important;
+
+  margin: 0 0 30px !important;
+
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+}
+
+
+/* Remove any accidental top offset */
+
+.food-lister-welcome {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.food-lister-topbar-actions {
+  margin-top: 0 !important;
+  padding-top: 2px !important;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1251px) {
+
+  .food-lister-main {
+    width: 100% !important;
+
+    margin-left: 0 !important;
+
+    padding: 34px 42px 50px !important;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1250px) {
+
+  .food-lister-main {
+    width: 100% !important;
+
+    margin-left: 0 !important;
+
+    padding: 30px 28px 45px !important;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .food-lister-main {
+    width: 100% !important;
+
+    margin-left: 0 !important;
+
+    padding: 25px 16px 40px !important;
+  }
+
+}
+/* Remove unwanted border/box around partner profile */
+.food-lister-partner-profile {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+/* =========================================================
+   MEALSHARE VISUAL ENHANCEMENT LAYER
+   Safe CSS-only redesign
+   ========================================================= */
+
+.food-lister-dashboard {
+  background:
+    radial-gradient(
+      circle at 8% 18%,
+      rgba(184, 117, 78, 0.09),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 92% 8%,
+      rgba(125, 31, 42, 0.06),
+      transparent 22%
+    ),
+    #f7f2ec;
+}
+
+/* ---------- Main content ---------- */
+
+.food-lister-main {
+  position: relative;
+  overflow: hidden;
+}
+
+.food-lister-main::before {
+  content: "";
+  position: absolute;
+  top: 90px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(154, 107, 79, 0.14);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.food-lister-main::after {
+  content: "✦";
+  position: absolute;
+  top: 150px;
+  right: 80px;
+  color: rgba(125, 31, 42, 0.12);
+  font-size: 90px;
+  pointer-events: none;
+}
+
+/* ---------- Welcome area ---------- */
+
+.food-lister-welcome {
+  position: relative;
+}
+
+.food-lister-welcome::after {
+  content: "GOOD FOOD • BRIGHTER FUTURES";
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  color: rgba(154, 107, 79, 0.45);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+/* ---------- Statistics ---------- */
+
+.food-lister-stat {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(81, 32, 42, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 253, 249, 0.94);
+  box-shadow:
+    0 12px 32px rgba(81, 32, 42, 0.055);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.food-lister-stat::before {
+  content: "";
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(154, 107, 79, 0.12);
+  border-radius: 50%;
+}
+
+.food-lister-stat:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 18px 38px rgba(81, 32, 42, 0.09);
+}
+
+.food-lister-stat-image {
+  position: relative;
+}
+
+.food-lister-stat-image img {
+  transition:
+    transform 0.45s ease,
+    filter 0.45s ease;
+}
+
+.food-lister-stat:hover
+.food-lister-stat-image img {
+  transform: scale(1.08);
+  filter: saturate(1.08);
+}
+
+/* ---------- Main cards ---------- */
+
+.food-lister-active-card,
+.food-lister-side-card {
+  border: 1px solid rgba(81, 32, 42, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 253, 249, 0.96);
+  box-shadow:
+    0 12px 32px rgba(81, 32, 42, 0.055);
+}
+
+/* ---------- Section headings ---------- */
+
+.food-lister-section-heading h2,
+.food-lister-side-heading h2 {
+  color: #51202a;
+}
+
+.food-lister-section-heading h2 {
+  letter-spacing: -0.02em;
+}
+
+.food-lister-section-heading p {
+  color: #75686a;
+}
+
+/* ---------- Listing cards ---------- */
+
+.food-lister-listing-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(81, 32, 42, 0.08);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow:
+    0 7px 20px rgba(81, 32, 42, 0.045);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.food-lister-listing-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 34px rgba(81, 32, 42, 0.1);
+}
+
+.food-lister-listing-image {
+  overflow: hidden;
+}
+
+.food-lister-listing-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 55%,
+      rgba(40, 8, 12, 0.18)
+    );
+  pointer-events: none;
+}
+
+.food-lister-listing-image img {
+  transition:
+    transform 0.5s ease;
+}
+
+.food-lister-listing-card:hover
+.food-lister-listing-image img {
+  transform: scale(1.07);
+}
+
+/* ---------- Badges ---------- */
+
+.food-lister-active-badge,
+.food-lister-left-badge {
+  backdrop-filter: blur(8px);
+}
+
+.food-lister-active-badge {
+  box-shadow:
+    0 4px 12px rgba(40, 8, 12, 0.1);
+}
+
+/* ---------- Buttons ---------- */
+
+.food-lister-create-button {
+  box-shadow:
+    0 8px 18px rgba(125, 31, 42, 0.16);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.food-lister-create-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 24px rgba(125, 31, 42, 0.2);
+}
+
+.food-lister-manage-button,
+.food-lister-outline-button {
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.food-lister-manage-button:hover,
+.food-lister-outline-button:hover {
+  transform: translateY(-2px);
+}
+
+/* ---------- Quick actions ---------- */
+
+.quick-actions-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-actions-card::after {
+  content: "♧";
+  position: absolute;
+  right: 18px;
+  bottom: -18px;
+  color: rgba(154, 107, 79, 0.1);
+  font-size: 100px;
+  pointer-events: none;
+}
+
+/* ---------- Trend card ---------- */
+
+.trend-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.trend-card::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  right: -70px;
+  top: -70px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(125, 31, 42, 0.08),
+      transparent 70%
+    );
+}
+
+/* ---------- Activity ---------- */
+
+.food-lister-activity-item {
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.food-lister-activity-item:hover {
+  background: #fff8f3;
+  transform: translateX(3px);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 800px) {
+  .food-lister-welcome::after,
+  .food-lister-main::before,
+  .food-lister-main::after {
+    display: none;
+  }
+}

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import "../styles/hero.css";
+import "../hero.css";
 
-import heroImage from "../assets/images/hero.jpg";
-import rescuedImage from "../assets/images/handoff.jpg";
+import heroImage from "../../../assets/images/hero.jpg";
+import rescuedImage from "../../../assets/images/handoff.jpg";
 
 function Hero() {
   return (

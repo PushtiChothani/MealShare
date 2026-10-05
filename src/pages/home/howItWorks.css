@@ -1,0 +1,160 @@
+.how-it-works {
+  width: 100%;
+  background: #f7f1e8;
+  padding: 100px 0;
+}
+
+.how-it-works-container {
+  width: 90%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.how-it-works-heading {
+  max-width: 700px;
+  margin-bottom: 65px;
+}
+
+.how-it-works-label {
+  display: inline-block;
+  margin-bottom: 20px;
+
+  color: #806b66;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.how-it-works-heading h2 {
+  margin: 0;
+
+  color: #551e28;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 6vw, 76px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+.how-it-works-heading p {
+  max-width: 520px;
+  margin: 28px 0 0;
+
+  color: #806b66;
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.how-it-works-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.how-it-works-step {
+  min-height: 280px;
+
+  padding: 28px;
+
+  border: 1px solid rgba(85, 30, 40, 0.12);
+  border-radius: 24px;
+
+  background: #fbf7f0;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.how-it-works-step:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 18px 40px rgba(85, 30, 40, 0.1);
+}
+
+.step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 55px;
+}
+
+.step-number {
+  color: #a38c85;
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.step-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #551e28;
+  color: #ffffff;
+
+  font-size: 21px;
+}
+
+.how-it-works-step h3 {
+  margin: 0 0 14px;
+
+  color: #551e28;
+
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.how-it-works-step p {
+  margin: 0;
+
+  color: #806b66;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 1000px) {
+  .how-it-works-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .how-it-works {
+    padding: 70px 0;
+  }
+
+  .how-it-works-heading {
+    margin-bottom: 45px;
+  }
+
+  .how-it-works-heading h2 {
+    font-size: 45px;
+    letter-spacing: -1px;
+  }
+
+  .how-it-works-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .how-it-works-step {
+    min-height: auto;
+  }
+
+  .step-top {
+    margin-bottom: 35px;
+  }
+}

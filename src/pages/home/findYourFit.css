@@ -1,0 +1,867 @@
+/* =========================================================
+   FIND YOUR FIT
+   ========================================================= */
+
+.find-your-fit {
+  width: 100%;
+
+  background: #f7f1e8;
+
+  padding: 100px 0 110px;
+
+  overflow: hidden;
+}
+
+.find-your-fit-container {
+  width: 90%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.find-your-fit-heading {
+  position: relative;
+
+  max-width: 720px;
+
+  margin-bottom: 55px;
+}
+
+.find-your-fit-heading > span {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 18px;
+
+  color: #7d1f2a;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+}
+
+.find-your-fit-heading > span::before {
+  content: "⌁";
+
+  color: #d94352;
+
+  font-size: 20px;
+
+  transform: rotate(-30deg);
+}
+
+.find-your-fit-heading h2 {
+  margin: 0;
+
+  color: #3b0d14;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(48px, 6vw, 78px);
+
+  font-weight: 500;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.055em;
+}
+
+.find-your-fit-heading p {
+  max-width: 580px;
+
+  margin: 25px 0 0;
+
+  color: #765c60;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+.find-your-fit-heading p strong {
+  color: #7d1f2a;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.find-your-fit-content {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.75fr)
+    minmax(280px, 0.7fr);
+
+  gap: 22px;
+
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   LIVE MAP
+   ========================================================= */
+
+.vadodara-map {
+  position: relative;
+
+  min-width: 0;
+
+  height: 540px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  background: #ddd;
+
+  box-shadow:
+    0 20px 60px
+    rgba(46, 10, 15, 0.08);
+}
+
+.live-map {
+  position: absolute !important;
+
+  inset: 0;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  min-height: 0 !important;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   LEAFLET
+   ========================================================= */
+
+.leaflet-container {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+.leaflet-control-zoom {
+  margin:
+    18px 18px 0 0 !important;
+
+  border: none !important;
+
+  box-shadow:
+    0 5px 18px
+    rgba(46, 10, 15, 0.18) !important;
+}
+
+.leaflet-control-zoom a {
+  width: 34px !important;
+  height: 34px !important;
+
+  line-height: 34px !important;
+
+  border: none !important;
+
+  background: #f7f1e8 !important;
+
+  color: #4a1018 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #fff !important;
+
+  color: #7d1f2a !important;
+}
+
+
+/* =========================================================
+   BURGUNDY MAP OVERLAY
+   ========================================================= */
+
+.map-overlay {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  z-index: 500;
+
+  width: 43%;
+
+  min-width: 280px;
+
+  padding:
+    38px
+    38px
+    34px;
+
+  border-top-right-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(55, 10, 17, 0.98),
+      rgba(73, 15, 24, 0.96)
+    );
+
+  color: #f7f1e8;
+
+  box-shadow:
+    15px -10px 35px
+    rgba(46, 10, 15, 0.12);
+}
+
+.map-label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 18px;
+
+  color: #e8505e;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+}
+
+.map-pin-dot {
+  width: 7px;
+  height: 7px;
+
+  display: inline-block;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #ed4b5a;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(237, 75, 90, 0.12);
+}
+
+.map-overlay h3 {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 45px;
+
+  font-weight: 500;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.04em;
+}
+
+.map-overlay h3 em {
+  color: #ef5361;
+
+  font-size: 27px;
+
+  font-style: normal;
+}
+
+.map-overlay p {
+  margin:
+    22px
+    0
+    25px;
+
+  color: #d4c0c1;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+.map-overlay button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding:
+    12px
+    17px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.32);
+
+  border-radius: 30px;
+
+  background: transparent;
+
+  color: #fff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.map-overlay button span {
+  color: #ef5361;
+
+  font-size: 17px;
+}
+
+.map-overlay button:hover {
+  background: #7d1f2a;
+
+  border-color: #7d1f2a;
+
+  transform: translateY(-2px);
+}
+
+.map-availability {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  margin-top: 24px;
+}
+
+.map-availability strong {
+  color: #fff;
+
+  font-size: 12px;
+}
+
+.map-availability span {
+  color: #a98f92;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   POPUP
+   ========================================================= */
+
+.meal-popup {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  min-width: 125px;
+}
+
+.meal-popup strong {
+  color: #3b0d14;
+
+  font-size: 13px;
+}
+
+.meal-popup span {
+  color: #9a4b53;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   MEAL PLAN CARD
+   ========================================================= */
+
+.meal-plan-card {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  min-height: 540px;
+
+  overflow: hidden;
+
+  padding:
+    40px
+    34px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      155deg,
+      #eee5d9,
+      #e5dacb
+    );
+
+  color: #3b0d14;
+
+  box-shadow:
+    0 20px 60px
+    rgba(46, 10, 15, 0.07);
+}
+
+
+/* Decorative circle */
+
+.meal-plan-decoration {
+  position: absolute;
+
+  top: -65px;
+  right: -65px;
+
+  width: 210px;
+  height: 210px;
+
+  border:
+    1px solid
+    rgba(74, 16, 24, 0.12);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  animation:
+    mealPlanOrbit 8s ease-in-out infinite;
+}
+
+.meal-plan-decoration::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 35px;
+
+  border:
+    1px solid
+    rgba(74, 16, 24, 0.09);
+
+  border-radius: 50%;
+}
+
+.meal-plan-decoration span {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #8e303b;
+}
+
+.meal-plan-decoration span:nth-child(1) {
+  top: 28px;
+  left: 92px;
+}
+
+.meal-plan-decoration span:nth-child(2) {
+  right: 25px;
+  top: 102px;
+}
+
+.meal-plan-decoration span:nth-child(3) {
+  bottom: 25px;
+  left: 65px;
+}
+
+@keyframes mealPlanOrbit {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(18deg);
+  }
+}
+
+
+/* Icon */
+
+.meal-plan-icon {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 55px;
+  height: 55px;
+
+  border:
+    1px solid
+    rgba(74, 16, 24, 0.18);
+
+  border-radius: 50%;
+
+  color: #7d1f2a;
+
+  font-size: 24px;
+}
+
+
+/* Heading */
+
+.meal-plan-card h3 {
+  position: relative;
+
+  z-index: 2;
+
+  margin:
+    30px
+    0
+    auto;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 30px;
+
+  font-weight: 500;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.035em;
+}
+
+
+/* Order button */
+
+.meal-plan-card button {
+  position: relative;
+
+  z-index: 2;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  align-self: flex-start;
+
+  gap: 14px;
+
+  margin-top: 35px;
+
+  padding:
+    14px
+    22px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: #4a1018;
+
+  color: #fff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.meal-plan-card button span {
+  color: #ef5361;
+
+  font-size: 17px;
+}
+
+.meal-plan-card button:hover {
+  background: #7d1f2a;
+
+  transform: translateY(-3px);
+}
+
+
+/* Divider */
+
+.meal-plan-divider {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  height: 1px;
+
+  margin:
+    35px
+    0
+    20px;
+
+  background:
+    rgba(74, 16, 24, 0.15);
+}
+
+
+/* Bottom text */
+
+.meal-plan-card p {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0;
+
+  color: #70575b;
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+.meal-plan-card p strong {
+  color: #4a1018;
+}
+
+.meal-plan-heart {
+  color: #9a303c;
+
+  margin-right: 5px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .find-your-fit-content {
+    grid-template-columns: 1fr;
+  }
+
+  .meal-plan-card {
+    min-height: 360px;
+  }
+
+  .map-overlay {
+    width: 48%;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .find-your-fit {
+    padding:
+      70px
+      0
+      80px;
+  }
+
+  .find-your-fit-heading h2 {
+    font-size: 48px;
+  }
+
+  .find-your-fit-content {
+    gap: 16px;
+  }
+
+  .vadodara-map {
+    height: 600px;
+  }
+
+  .map-overlay {
+    width: calc(100% - 20px);
+
+    min-width: 0;
+
+    left: 10px;
+    bottom: 10px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+  }
+
+  .map-overlay h3 {
+    font-size: 38px;
+  }
+
+  .meal-plan-card {
+    min-height: 400px;
+
+    padding: 30px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .find-your-fit-container {
+    width: 92%;
+  }
+
+  .find-your-fit-heading h2 {
+    font-size: 40px;
+  }
+
+  .vadodara-map {
+    height: 560px;
+  }
+
+  .map-overlay {
+    padding: 22px;
+  }
+
+  .map-overlay h3 {
+    font-size: 34px;
+  }
+
+  .meal-plan-card h3 {
+    font-size: 27px;
+  }
+
+}
+/* =========================================================
+   LIVE LOCATION BUTTON
+   ========================================================= */
+
+.map-location-button {
+  position: absolute !important;
+
+  left: 28px;
+  bottom: 28px;
+
+  z-index: 1000 !important;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 13px 19px;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  border-radius: 999px;
+
+  background: #7d1f2a;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.02em;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(46, 10, 15, 0.25);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.map-location-button span {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #ef5361;
+
+  font-size: 19px;
+
+  line-height: 1;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.map-location-button:hover {
+  background: #4a1018;
+
+  border-color: #ef5361;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 30px rgba(46, 10, 15, 0.32);
+}
+
+.map-location-button:hover span {
+  transform: scale(1.15);
+}
+
+
+/* =========================================================
+   MOBILE LOCATION BUTTON
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .map-location-button {
+    left: 22px;
+    bottom: 22px;
+
+    padding: 12px 16px;
+
+    font-size: 10px;
+  }
+
+}
