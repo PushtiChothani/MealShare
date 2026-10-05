@@ -8,6 +8,9 @@ import ManageListings from "./pages/ManageListings/ManageListings";
 import Reservations from "./pages/Reservations/Reservations";
 import PartnerProfile from "./pages/PartnerProfile/PartnerProfile";
 import PartnerSettings from "./pages/PartnerSettings/PartnerSettings";
+import Meals from "./pages/Meals";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function AppLayout() {
   const navigate = useNavigate();
@@ -372,7 +375,10 @@ function AppLayout() {
           path="/partner-settings"
           element={<PartnerSettings />}
         />
-
+        <Route path="/meals" element={<Meals />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        
       </Routes>
     </>
   );

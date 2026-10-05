@@ -1,0 +1,344 @@
+/* =========================================
+   MEAL CARD STYLES
+========================================= */
+
+.meal-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  background: #ffffff;
+  border: 1px solid #eadfd6;
+  border-radius: 20px;
+
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(91, 32, 41, 0.06);
+
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+              box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Hover effect */
+.meal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(91, 32, 41, 0.12);
+}
+
+/* =========================================
+   1. FOOD IMAGE WRAPPER
+========================================= */
+
+.meal-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #f8f1e6;
+}
+
+.meal-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+/* Image zoom on hover */
+.meal-card:hover .meal-card-image {
+  transform: scale(1.06);
+}
+
+/* Image badge tag */
+.meal-card-category-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+
+  padding: 4px 12px;
+  background: rgba(91, 32, 41, 0.85);
+  color: #fffaf3;
+
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   CARD BODY
+========================================= */
+
+.meal-card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 18px;
+}
+
+/* =========================================
+   2. CATEGORY & 5. RATING ROW
+========================================= */
+
+.meal-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.meal-card-category {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #d93636;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.meal-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.star-icon {
+  color: #ffb400;
+  font-size: 13px;
+}
+
+.rating-score {
+  font-weight: 700;
+  color: #5b2029;
+}
+
+.reviews-count {
+  color: #765f5a;
+  font-size: 11px;
+}
+
+/* =========================================
+   3. MEAL NAME
+========================================= */
+
+.meal-card-title {
+  margin: 0 0 6px 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #5b2029;
+  line-height: 1.3;
+
+  /* Keep title max 2 lines for uniform card layout */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =========================================
+   4. SHORT DESCRIPTION
+========================================= */
+
+.meal-card-description {
+  margin: 0 0 12px 0;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #765f5a;
+  line-height: 1.45;
+
+  /* Clamp to 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =========================================
+   6. FOOD PROVIDER
+========================================= */
+
+.meal-card-provider {
+  margin-bottom: 10px;
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #765f5a;
+}
+
+.provider-prefix {
+  color: #765f5a;
+}
+
+.provider-name {
+  font-weight: 700;
+  color: #d93636;
+}
+
+/* =========================================
+   7. LOCATION + QUANTITY
+========================================= */
+
+.meal-card-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-bottom: 16px;
+  padding: 5px 10px;
+
+  background: #fffaf3;
+  border: 1px solid #eadfd6;
+  border-radius: 8px;
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #765f5a;
+
+  width: fit-content;
+}
+
+.meta-separator {
+  color: #eadfd6;
+  font-weight: bold;
+}
+
+.meta-item {
+  font-weight: 500;
+}
+
+/* =========================================
+   FOOTER (PRICE & BUTTON)
+========================================= */
+
+.meal-card-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #eadfd6;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meal-card-price-group {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.discounted-price {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #5b2029;
+}
+
+.original-price {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #765f5a;
+  text-decoration: line-through;
+}
+
+/* 10. ADD / RESERVE BUTTON */
+.meal-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 8px 18px;
+
+  background: #d93636;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 20px;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(217, 54, 54, 0.2);
+
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.meal-card-btn:hover {
+  background: #5b2029;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(91, 32, 41, 0.25);
+}
+
+.meal-card-btn:active {
+  transform: translateY(0);
+}
+
+/* Stock limit styles */
+.stock-alert-pill {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  background: #d32f2f;
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 800;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: pulseStock 2s infinite ease-in-out;
+}
+
+@keyframes pulseStock {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+.stock-zero {
+  color: #c62828;
+  font-weight: 700;
+}
+
+.meal-card-btn.stock-full-btn {
+  background: #7a6660;
+  color: #ffffff;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.85;
+}
+
+.meal-card-btn.stock-full-btn:hover {
+  background: #7a6660;
+  transform: none;
+  box-shadow: none;
+}
+
+.meal-card-btn.in-cart-btn {
+  background: #2e7d32;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.25);
+}
+
+.meal-card-btn.in-cart-btn:hover {
+  background: #1b5e20;
+}
+
+.meal-card-btn.added-btn {
+  background: #2e7d32;
+}
+
