@@ -1,19 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./PartnerProfile.css";
 
+const DEFAULT_PROFILE = {
+  restaurantName: "The Green Bowl",
+  ownerName: "Green Bowl Team",
+  email: "contact@greenbowl.com",
+  phone: "+91 98765 43210",
+  address: "Alkapuri",
+  city: "Vadodara",
+  description:
+    "Fresh, healthy meals prepared with care and shared with the community.",
+};
+
+const PROFILE_STORAGE_KEY = "mealshare_partner_profile";
+
 function PartnerProfile() {
-  const [profile, setProfile] = useState({
-    restaurantName: "The Green Bowl",
-    ownerName: "Green Bowl Team",
-    email: "contact@greenbowl.com",
-    phone: "+91 98765 43210",
-    address: "Alkapuri",
-    city: "Vadodara",
-    description:
-      "Fresh, healthy meals prepared with care and shared with the community.",
+  const [profile, setProfile] = useState(() => {
+    try {
+      const savedProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
+
+      if (savedProfile) {
+        return JSON.parse(savedProfile);
+      }
+    } catch (error) {
+      console.error("Unable to load partner profile:", error);
+    }
+
+    return DEFAULT_PROFILE;
   });
 
   const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        PROFILE_STORAGE_KEY,
+        JSON.stringify(profile)
+      );
+    } catch (error) {
+      console.error("Unable to save partner profile:", error);
+    }
+  }, [profile]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,7 +56,16 @@ function PartnerProfile() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setSaved(true);
+    try {
+      localStorage.setItem(
+        PROFILE_STORAGE_KEY,
+        JSON.stringify(profile)
+      );
+
+      setSaved(true);
+    } catch (error) {
+      console.error("Unable to save partner profile:", error);
+    }
   };
 
   return (
