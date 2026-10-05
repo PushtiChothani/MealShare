@@ -21,13 +21,13 @@ function Navbar() {
   return (
     <header
       className={`navbar ${scrolled ? "navbar-scrolled" : ""} ${
-        location.pathname === "/meals" || location.pathname === "/login" || location.pathname === "/signup" ? "navbar-meals" : ""
+        location.pathname === "/meals" || location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/home" ? "navbar-meals" : ""
       }`}
     >
       <div className="navbar-container">
 
         {/* Logo */}
-        <NavLink to="/" className="navbar-logo">
+        <NavLink to="/home" className="navbar-logo">
           <span className="logo-icon">
             <svg
               viewBox="0 0 24 24"
@@ -58,7 +58,7 @@ function Navbar() {
         <nav className="navbar-links">
 
           <NavLink
-            to="/"
+            to="/home"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
