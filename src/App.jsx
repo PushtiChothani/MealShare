@@ -1,11 +1,12 @@
 import {
   BrowserRouter,
+  Navigate,
   Route,
   Routes,
   useLocation,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider, getDashboardPath, useAuth } from "./context/AuthContext";
 import ProtectedRoute from "./context/ProtectedRoute";
 import About from "./pages/About/About";
 import CreateListing from "./pages/CreateListing/CreateListing";
@@ -21,6 +22,16 @@ import Reservations from "./pages/Reservations/Reservations";
 import ReserverDashboard from "./pages/ReserverDashboard/ReserverDashboard";
 import Signup from "./pages/Signup";
 
+function DashboardRedirect() {
+  const { user, isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <Navigate to={getDashboardPath(user?.role)} replace />;
+}
+
 function AppContent() {
   const location = useLocation();
 
@@ -34,6 +45,7 @@ function AppContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<About />} />
+        <Route path="/dashboard" element={<DashboardRedirect />} />
         <Route
           path="/reserver-dashboard"
           element={
