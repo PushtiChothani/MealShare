@@ -1,6 +1,6 @@
 import LandingHero from "../components/landing/LandingHero";
 import LandingTimeSection from "../components/landing/LandingTimeSection";
-import "../styles/landing.css";
+import "../pages/home/landing.css";
 
 function LandingPage() {
   return (

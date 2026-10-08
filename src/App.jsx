@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Landing from "./pages/Landing";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import Meals from "./pages/Meals";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -21,10 +21,10 @@ function AppContent() {
         {/* 1. Animated Landing Page - NO NAVBAR */}
         <Route path="/" element={<Landing />} />
 
-        {/* 2. Existing Home Page */}
+        {/* 2. Home Page */}
         <Route path="/home" element={<Home />} />
 
-        {/* Other existing pages */}
+        {/* Other pages */}
         <Route path="/meals" element={<Meals />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

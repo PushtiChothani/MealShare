@@ -1,0 +1,22 @@
+/* =========================================
+   INTERNAL DASHBOARD LAYOUT
+========================================= */
+
+.dashboard-page-content {
+  min-height: 100vh;
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .dashboard-page-content {
+    margin-left: 210px;
+    width: calc(100% - 210px);
+  }
+}

@@ -1,4 +1,4 @@
-import "../styles/filterbar.css";
+import "../filterbar.css";
 import {
   Search,
   MapPin,

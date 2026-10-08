@@ -1,13 +1,13 @@
-import "../styles/carousel.css";
+import "../carousel.css";
 
-import warmMeals from "../assets/images/carousel_warm_meals.jpg";
-import kitchenRescue from "../assets/images/carousel_kitchen_rescue.jpg";
-import freshProduce from "../assets/images/carousel_fresh_produce.jpg";
-import communityPacking from "../assets/images/carousel_community_packing.jpg";
-import freshBaked from "../assets/images/carousel_fresh_baked.jpg";
-import shareHope from "../assets/images/carousel_share_hope.jpg";
-import chefPrepared from "../assets/images/carousel_chef_prepared.jpg";
-import nourishingBowls from "../assets/images/carousel_nourishing_bowls.jpg";
+import warmMeals from "../../../assets/images/carousel_warm_meals.jpg";
+import kitchenRescue from "../../../assets/images/carousel_kitchen_rescue.jpg";
+import freshProduce from "../../../assets/images/carousel_fresh_produce.jpg";
+import communityPacking from "../../../assets/images/carousel_community_packing.jpg";
+import freshBaked from "../../../assets/images/carousel_fresh_baked.jpg";
+import shareHope from "../../../assets/images/carousel_share_hope.jpg";
+import chefPrepared from "../../../assets/images/carousel_chef_prepared.jpg";
+import nourishingBowls from "../../../assets/images/carousel_nourishing_bowls.jpg";
 
 const rowOne = [
   { image: warmMeals, title: "Warm meals" },

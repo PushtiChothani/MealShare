@@ -1,4 +1,4 @@
-import "../styles/cart.css";
+import "../cart.css";
 import { X, ShoppingBag, Trash2, MapPin, Phone, Plus, Minus, CheckCircle, AlertTriangle } from "lucide-react";
 import { useState } from "react";
 
