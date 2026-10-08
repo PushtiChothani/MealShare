@@ -1,3 +1,4 @@
+import React from "react";
 import "../howItWorks.css";
 
 const steps = [
@@ -6,7 +7,7 @@ const steps = [
     title: "Choose Your Plan",
     description:
       "Select a meal plan that fits your needs and discover available surplus food nearby.",
-    icon: "◉",
+    icon: "▤",
   },
   {
     number: "02",
@@ -27,44 +28,145 @@ const steps = [
     title: "Enjoy & Make an Impact",
     description:
       "Enjoy good food while helping reduce waste and supporting your local community.",
-    icon: "♥",
+    icon: "♟",
   },
 ];
 
 function HowItWorks() {
   return (
     <section className="how-it-works">
+
       <div className="how-it-works-container">
+
+        {/* ================= HEADING ================= */}
+
         <div className="how-it-works-heading">
-          <span className="how-it-works-label">How It Works</span>
+
+          <span className="how-it-works-label">
+            HOW IT WORKS
+          </span>
 
           <h2>
-            From Surplus
+            From surplus food to
             <br />
-            to Someone’s Plate
+            <em>shared meals.</em>
           </h2>
 
           <p>
-            A simple way to rescue good food, discover local meals,
-            and make a meaningful difference.
+            MealShare makes food rescue simple, local and accessible.
           </p>
+
         </div>
 
-        <div className="how-it-works-steps">
-          {steps.map((step) => (
-            <div className="how-it-works-step" key={step.number}>
-              <div className="step-top">
-                <span className="step-number">{step.number}</span>
-                <span className="step-icon">{step.icon}</span>
+
+        {/* ================= PROCESS ================= */}
+
+        <div className="how-it-works-process">
+
+          {/* REAL SVG CURVED LINE */}
+          <svg
+            className="process-svg"
+            viewBox="0 0 1200 260"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+
+            {/* soft shadow line */}
+            <path
+              className="process-path-shadow"
+              d="
+                M 20 150
+                C 120 150, 150 210, 300 210
+                C 430 210, 455 55, 600 55
+                C 745 55, 770 210, 900 210
+                C 1040 210, 1080 115, 1180 115
+              "
+            />
+
+            {/* main line */}
+            <path
+              className="process-path"
+              d="
+                M 20 138
+                C 120 138, 150 198, 300 198
+                C 430 198, 455 43, 600 43
+                C 745 43, 770 198, 900 198
+                C 1040 198, 1080 103, 1180 103
+              "
+            />
+
+            {/* start dot */}
+            <circle
+              className="process-dot"
+              cx="20"
+              cy="138"
+              r="6"
+            />
+
+            {/* end dot */}
+            <circle
+              className="process-dot"
+              cx="1180"
+              cy="103"
+              r="6"
+            />
+
+          </svg>
+
+
+          {/* ================= FOUR STEPS ================= */}
+
+          <div className="how-it-works-steps">
+
+            {steps.map((step, index) => (
+
+              <div
+                className={`how-it-works-step step-${index + 1}`}
+                key={step.number}
+              >
+
+                {/* faded number */}
+
+                <span className="step-background-number">
+                  {step.number}
+                </span>
+
+
+                {/* icon */}
+
+                <div className="step-icon-position">
+
+                  <div className="step-icon">
+                    {step.icon}
+                  </div>
+
+                </div>
+
+
+                {/* text */}
+
+                <div className="step-content">
+
+                  <h3>
+                    {step.title}
+                  </h3>
+
+                  <p>
+                    {step.description}
+                  </p>
+
+                </div>
+
               </div>
 
-              <h3>{step.title}</h3>
+            ))}
 
-              <p>{step.description}</p>
-            </div>
-          ))}
+          </div>
+
         </div>
+
       </div>
+
     </section>
   );
 }

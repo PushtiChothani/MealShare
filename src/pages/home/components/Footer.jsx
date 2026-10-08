@@ -33,7 +33,6 @@ function Footer() {
       <span className="footer-spark footer-spark-two">✦</span>
       <span className="footer-heart">♥</span>
 
-
       <div className="footer-container">
 
         {/* =================================================
@@ -57,20 +56,17 @@ function Footer() {
 
             </div>
 
-
             <h2>
               Rescue food.
               <br />
               <span>Share hope.</span>
             </h2>
 
-
             <p>
               Good food deserves another table.
               Together, we connect surplus meals
               with people who can use them.
             </p>
-
 
             <a
               href="#meals"
@@ -146,90 +142,6 @@ function Footer() {
 
 
         {/* =================================================
-            NEWSLETTER + CONTACT
-            ================================================= */}
-
-        <div className="footer-contact-card">
-
-          <div className="footer-newsletter">
-
-            <span className="footer-eyebrow">
-              Stay in the loop
-            </span>
-
-            <h3>
-              Be part of the{" "}
-              <span>rescue.</span>
-            </h3>
-
-            <p>
-              Get local rescue stories, new meals,
-              and community updates.
-            </p>
-
-
-            <form
-              className="footer-form"
-              onSubmit={(event) => event.preventDefault()}
-            >
-
-              <input
-                type="email"
-                placeholder="Your email address"
-                aria-label="Your email address"
-              />
-
-              <button type="submit">
-                Join
-                <span>→</span>
-              </button>
-
-            </form>
-
-          </div>
-
-
-          <div className="footer-contact">
-
-            <span className="footer-eyebrow">
-              Find us
-            </span>
-
-            <h4>
-              Vadodara, Gujarat
-            </h4>
-
-            <a href="mailto:hello@mealshare.com">
-              hello@mealshare.com
-            </a>
-
-            <a href="tel:+918453561234">
-              +91 84535 61234
-            </a>
-
-
-            <div className="footer-socials">
-
-              <a href="#instagram" aria-label="Instagram">
-                ig
-              </a>
-
-              <a href="#facebook" aria-label="Facebook">
-                fb
-              </a>
-
-              <a href="#linkedin" aria-label="LinkedIn">
-                in
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        {/* =================================================
             LARGE WORDMARK
             ================================================= */}
 
@@ -241,11 +153,9 @@ function Footer() {
             <span />
           </div>
 
-
           <div className="footer-wordmark-text">
             MealShare
           </div>
-
 
           <p>
             LESS WASTE
@@ -269,6 +179,7 @@ function Footer() {
           </span>
 
           <div>
+
             <a href="#privacy">
               Privacy
             </a>
@@ -280,6 +191,7 @@ function Footer() {
             <a href="#accessibility">
               Accessibility
             </a>
+
           </div>
 
           <span>

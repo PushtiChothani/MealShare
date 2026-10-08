@@ -1,29 +1,57 @@
+/* =========================================================
+   MEALSHARE - HOW IT WORKS
+   ========================================================= */
+
 .how-it-works {
   width: 100%;
+
   background: #f7f1e8;
-  padding: 100px 0;
+
+  padding: 105px 0 125px;
+
+  overflow: hidden;
 }
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
 
 .how-it-works-container {
   width: 90%;
-  max-width: 1250px;
+  max-width: 1280px;
+
   margin: 0 auto;
 }
 
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
 .how-it-works-heading {
-  max-width: 700px;
-  margin-bottom: 65px;
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto 70px;
+
+  text-align: center;
 }
 
 .how-it-works-label {
-  display: inline-block;
+  display: block;
+
   margin-bottom: 20px;
 
-  color: #806b66;
+  color: #7d1f2a;
 
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 4px;
+
   text-transform: uppercase;
 }
 
@@ -33,128 +61,511 @@
   color: #551e28;
 
   font-family: Georgia, "Times New Roman", serif;
+
   font-size: clamp(48px, 6vw, 76px);
-  font-weight: 400;
-  line-height: 1.05;
+
+  font-weight: 500;
+
+  line-height: 1.02;
+
   letter-spacing: -2px;
 }
 
+.how-it-works-heading h2 em {
+  color: #8f2937;
+
+  font-style: italic;
+
+  font-weight: 400;
+}
+
 .how-it-works-heading p {
-  max-width: 520px;
-  margin: 28px 0 0;
+  margin: 25px auto 0;
 
   color: #806b66;
 
-  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 16px;
+
   line-height: 1.7;
 }
 
-.how-it-works-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+
+/* =========================================================
+   PROCESS AREA
+   ========================================================= */
+
+.how-it-works-process {
+  position: relative;
+
+  width: 100%;
+
+  height: 420px;
 }
 
+
+/* =========================================================
+   SVG CURVED LINE
+   ========================================================= */
+
+.process-svg {
+  position: absolute;
+
+  z-index: 1;
+
+  top: 45px;
+  left: 0;
+
+  width: 100%;
+  height: 260px;
+
+  overflow: visible;
+}
+
+.process-path {
+  fill: none;
+
+  stroke: #8f2937;
+
+  stroke-width: 2.5;
+
+  stroke-linecap: round;
+}
+
+.process-path-shadow {
+  fill: none;
+
+  stroke: rgba(143, 41, 55, 0.10);
+
+  stroke-width: 4;
+
+  stroke-linecap: round;
+
+  transform: translateY(13px);
+}
+
+.process-dot {
+  fill: #8f2937;
+}
+
+
+/* =========================================================
+   STEPS GRID
+   ========================================================= */
+
+.how-it-works-steps {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 30px;
+}
+
+
+/* =========================================================
+   STEP
+   ========================================================= */
+
 .how-it-works-step {
-  min-height: 280px;
+  position: relative;
 
-  padding: 28px;
+  height: 100%;
 
-  border: 1px solid rgba(85, 30, 40, 0.12);
-  border-radius: 24px;
+  padding: 0 5px;
+}
 
-  background: #fbf7f0;
+
+/* =========================================================
+   LARGE FADED NUMBER
+   ========================================================= */
+
+.step-background-number {
+  position: absolute;
+
+  z-index: 1;
+
+  top: 0;
+
+  left: 5px;
+
+  color: rgba(174, 79, 91, 0.15);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 76px;
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: -4px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ICON POSITION
+   ========================================================= */
+
+.step-icon-position {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Individual positions follow the SVG */
+
+.step-1 .step-icon-position {
+  top: 112px;
+}
+
+.step-2 .step-icon-position {
+  top: 58px;
+}
+
+.step-3 .step-icon-position {
+  top: 112px;
+}
+
+.step-4 .step-icon-position {
+  top: 75px;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.step-icon {
+  width: 76px;
+  height: 76px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #8f2937;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 30px;
+
+  box-shadow:
+    0 12px 28px rgba(85, 30, 40, 0.10),
+    0 0 0 10px rgba(255, 255, 255, 0.55);
 
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
 }
 
-.how-it-works-step:hover {
-  transform: translateY(-6px);
+.how-it-works-step:hover .step-icon {
+  transform: scale(1.08);
 
-  box-shadow: 0 18px 40px rgba(85, 30, 40, 0.1);
+  box-shadow:
+    0 18px 35px rgba(85, 30, 40, 0.15),
+    0 0 0 10px rgba(255, 255, 255, 0.70);
 }
 
-.step-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 
-  margin-bottom: 55px;
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.step-content {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 0;
+  right: 0;
+
+  top: 275px;
+
+  padding: 0 5px;
 }
 
-.step-number {
-  color: #a38c85;
-
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.step-icon {
-  width: 48px;
-  height: 48px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: #551e28;
-  color: #ffffff;
-
-  font-size: 21px;
-}
-
-.how-it-works-step h3 {
-  margin: 0 0 14px;
+.step-content h3 {
+  margin: 0 0 12px;
 
   color: #551e28;
 
-  font-size: 21px;
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 23px;
+
+  font-weight: 600;
+
   line-height: 1.2;
 }
 
-.how-it-works-step p {
+.step-content p {
+  max-width: 275px;
+
   margin: 0;
 
   color: #806b66;
 
+  font-family: Arial, Helvetica, sans-serif;
+
   font-size: 14px;
+
   line-height: 1.7;
 }
 
-@media (max-width: 1000px) {
-  .how-it-works-steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media (max-width: 600px) {
-  .how-it-works {
-    padding: 70px 0;
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .how-it-works-container {
+    width: 92%;
   }
 
   .how-it-works-heading {
-    margin-bottom: 45px;
+    margin-bottom: 60px;
   }
 
   .how-it-works-heading h2 {
-    font-size: 45px;
+    font-size: 58px;
+  }
+
+  .how-it-works-steps {
+    gap: 15px;
+  }
+
+  .step-background-number {
+    font-size: 65px;
+  }
+
+  .step-icon {
+    width: 66px;
+    height: 66px;
+
+    font-size: 26px;
+  }
+
+  .step-content h3 {
+    font-size: 20px;
+  }
+
+  .step-content p {
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .how-it-works {
+    padding: 80px 0 90px;
+  }
+
+  .how-it-works-heading h2 {
+    font-size: 48px;
+  }
+
+  .how-it-works-process {
+    height: auto;
+  }
+
+  /* Remove curved line when cards stack */
+
+  .process-svg {
+    display: none;
+  }
+
+  .how-it-works-steps {
+    height: auto;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 55px 30px;
+  }
+
+  .how-it-works-step {
+    min-height: 300px;
+  }
+
+  .step-background-number {
+    top: 0;
+  }
+
+  .step-icon-position,
+  .step-1 .step-icon-position,
+  .step-2 .step-icon-position,
+  .step-3 .step-icon-position,
+  .step-4 .step-icon-position {
+    position: relative;
+
+    top: auto;
+
+    left: auto;
+
+    transform: none;
+
+    margin-top: 70px;
+
+    justify-content: flex-start;
+  }
+
+  .step-content,
+  .step-1 .step-content,
+  .step-2 .step-content,
+  .step-3 .step-content,
+  .step-4 .step-content {
+    position: relative;
+
+    top: auto;
+
+    left: auto;
+    right: auto;
+
+    margin-top: 25px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .how-it-works {
+    padding: 70px 0 80px;
+  }
+
+  .how-it-works-container {
+    width: calc(100% - 35px);
+  }
+
+  .how-it-works-heading {
+    margin-bottom: 50px;
+  }
+
+  .how-it-works-label {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+  }
+
+  .how-it-works-heading h2 {
+    font-size: 40px;
+
     letter-spacing: -1px;
+  }
+
+  .how-it-works-heading p {
+    font-size: 14px;
   }
 
   .how-it-works-steps {
     grid-template-columns: 1fr;
+
+    gap: 45px;
   }
 
   .how-it-works-step {
-    min-height: auto;
+    min-height: 260px;
+
+    padding: 0 10px;
+
+    border-bottom: 1px solid rgba(85, 30, 40, 0.10);
   }
 
-  .step-top {
-    margin-bottom: 35px;
+  .how-it-works-step:last-child {
+    border-bottom: none;
   }
+
+  .step-background-number {
+    left: 0;
+
+    font-size: 64px;
+  }
+
+  .step-icon-position,
+  .step-1 .step-icon-position,
+  .step-2 .step-icon-position,
+  .step-3 .step-icon-position,
+  .step-4 .step-icon-position {
+    margin-top: 65px;
+  }
+
+  .step-icon {
+    width: 64px;
+    height: 64px;
+
+    font-size: 25px;
+  }
+
+  .step-content,
+  .step-1 .step-content,
+  .step-2 .step-content,
+  .step-3 .step-content,
+  .step-4 .step-content {
+    margin-top: 22px;
+
+    text-align: center;
+  }
+
+  .step-content h3 {
+    font-size: 22px;
+  }
+
+  .step-content p {
+    max-width: 100%;
+
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .how-it-works-heading h2 {
+    font-size: 35px;
+  }
+
+  .step-content h3 {
+    font-size: 20px;
+  }
+
 }
