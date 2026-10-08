@@ -1,5 +1,6 @@
 import "./home/Meals.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import FilterBar from "./home/components/FilterBar";
 import MealCard from "./home/components/MealCard";
 import CartModal from "./home/components/CartModal";
@@ -212,6 +213,7 @@ const sampleMeals = [
 ];
 
 function Meals() {
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [distance, setDistance] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
@@ -219,7 +221,17 @@ function Meals() {
   // CART STATE
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  useEffect(() => {
+  if (location.state?.openCart) {
+    setIsCartOpen(true);
 
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname
+    );
+  }
+}, [location.state]);
   // Dynamic Category Counts
   const categoryCounts = {
     All: sampleMeals.length,

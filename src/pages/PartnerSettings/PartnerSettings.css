@@ -1,3 +1,23 @@
+.partner-settings-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 9px 16px;
+  border: 1px solid rgba(81, 32, 42, 0.18);
+  border-radius: 999px;
+  background: transparent;
+  color: #51202a;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.partner-settings-back-button:hover {
+  background: #51202a;
+  color: #ffffff;
+}
 .partner-settings-page {
   min-height: 100vh;
   padding: 45px 7% 70px;

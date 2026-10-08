@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import AccountMenu from "../../components/AccountMenu";
 import "./ReserverDashboard.css";
 
 const dashboardStats = [
@@ -22,11 +24,68 @@ const dashboardStats = [
 ];
 
 function ReserverDashboard() {
+  const navigate = useNavigate();
+
+  // Profile button
+  const handleProfile = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  // View Reservation → scroll to Recent Reservations
+  const handleViewReservation = () => {
+    document
+      .querySelector(".recent-reservations-card")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
+
+  // See your impact / My impact → scroll to Impact card
+  const handleMyImpact = () => {
+    document
+      .querySelector(".impact-preview-card")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+  };
+
+  // View all → scroll to Recent Reservations
+  const handleViewAllReservations = () => {
+    document
+      .querySelector(".recent-reservations-card")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
+
+  // Find a meal → Meals page
+  const handleFindMeal = () => {
+    navigate("/meals");
+  };
+
+  // Saved meals → Meals page for now
+  const handleSavedMeals = () => {
+  navigate("/meals", {
+    state: {
+      openCart: true,
+    },
+  });
+};
+
   return (
     <div className="dashboard-page">
       <div className="dashboard-container">
 
-        {/* Dashboard Header */}
+        {/* =====================================================
+            DASHBOARD HEADER
+        ===================================================== */}
+
         <header className="dashboard-header">
           <div>
             <span className="dashboard-eyebrow">
@@ -42,24 +101,16 @@ function ReserverDashboard() {
             </p>
           </div>
 
+          {/* Keep the original AccountMenu so Profile + Logout work */}
           <div className="dashboard-profile">
-            <div className="profile-avatar">
-              M
-            </div>
-
-            <div className="profile-info">
-              <strong>MealSharer</strong>
-              <span>Vadodara</span>
-            </div>
-
-            <span className="profile-arrow">
-              ⌄
-            </span>
+            <AccountMenu />
           </div>
         </header>
 
+        {/* =====================================================
+            DASHBOARD STATISTICS
+        ===================================================== */}
 
-        {/* Dashboard Statistics */}
         <section className="dashboard-stats">
           {dashboardStats.map((stat) => (
             <article
@@ -71,7 +122,9 @@ function ReserverDashboard() {
               </div>
 
               <div className="stat-content">
-                <strong>{stat.value}</strong>
+                <strong>
+                  {stat.value}
+                </strong>
 
                 <h2>
                   {stat.label}
@@ -85,13 +138,15 @@ function ReserverDashboard() {
           ))}
         </section>
 
+        {/* =====================================================
+            UPCOMING MEAL + IMPACT
+        ===================================================== */}
 
-        {/* Upcoming Meal + Impact */}
         <section className="dashboard-main-grid">
 
-          {/* Upcoming Meal */}
-          <article className="dashboard-card upcoming-meal-card">
+          {/* UPCOMING MEAL */}
 
+          <article className="dashboard-card upcoming-meal-card">
             <div className="dashboard-card-heading">
               <div>
                 <span className="card-eyebrow">
@@ -108,16 +163,12 @@ function ReserverDashboard() {
               </span>
             </div>
 
-
             <div className="upcoming-meal-content">
-
               <div className="upcoming-meal-image">
                 <span>🥗</span>
               </div>
 
-
               <div className="upcoming-meal-details">
-
                 <span className="meal-category">
                   HEALTHY MEAL
                 </span>
@@ -130,11 +181,11 @@ function ReserverDashboard() {
                   The Green Bowl
                 </p>
 
-
                 <div className="pickup-info">
-
                   <div>
-                    <span>Pickup</span>
+                    <span>
+                      Pickup
+                    </span>
 
                     <strong>
                       Today · 1:30 PM
@@ -142,31 +193,31 @@ function ReserverDashboard() {
                   </div>
 
                   <div>
-                    <span>Location</span>
+                    <span>
+                      Location
+                    </span>
 
                     <strong>
                       Vadodara
                     </strong>
                   </div>
-
                 </div>
-
               </div>
-
             </div>
 
-
-            <button className="dashboard-primary-button">
+            <button
+              type="button"
+              className="dashboard-primary-button"
+              onClick={handleViewReservation}
+            >
               View Reservation
               <span>→</span>
             </button>
-
           </article>
 
+          {/* IMPACT */}
 
-          {/* Impact */}
           <article className="dashboard-card impact-preview-card">
-
             <span className="card-eyebrow">
               YOUR IMPACT
             </span>
@@ -177,37 +228,38 @@ function ReserverDashboard() {
               <span>Real change.</span>
             </h2>
 
-
             <div className="impact-circle">
-              <strong>12</strong>
+              <strong>
+                12
+              </strong>
 
               <span>
                 meals rescued
               </span>
             </div>
 
-
             <p>
               You're helping good food reach people
               instead of going to waste.
             </p>
 
-
-            <button className="dashboard-text-button">
+            <button
+              type="button"
+              className="dashboard-text-button"
+              onClick={handleMyImpact}
+            >
               See your impact
               <span>→</span>
             </button>
-
           </article>
-
         </section>
 
+        {/* =====================================================
+            RECENT RESERVATIONS
+        ===================================================== */}
 
-        {/* Recent Reservations */}
         <section className="dashboard-card recent-reservations-card">
-
           <div className="dashboard-card-heading">
-
             <div>
               <span className="card-eyebrow">
                 YOUR ACTIVITY
@@ -218,19 +270,21 @@ function ReserverDashboard() {
               </h2>
             </div>
 
-            <button className="view-all-button">
+            <button
+              type="button"
+              className="view-all-button"
+              onClick={handleViewAllReservations}
+            >
               View all
               <span>→</span>
             </button>
-
           </div>
-
 
           <div className="recent-reservations">
 
-            {/* Reservation 1 */}
-            <div className="reservation-row">
+            {/* RESERVATION 1 */}
 
+            <div className="reservation-row">
               <div className="reservation-icon">
                 🥗
               </div>
@@ -252,13 +306,11 @@ function ReserverDashboard() {
               <span className="reservation-status reserved">
                 Reserved
               </span>
-
             </div>
 
+            {/* RESERVATION 2 */}
 
-            {/* Reservation 2 */}
             <div className="reservation-row">
-
               <div className="reservation-icon">
                 🥐
               </div>
@@ -280,13 +332,11 @@ function ReserverDashboard() {
               <span className="reservation-status collected">
                 Collected
               </span>
-
             </div>
 
+            {/* RESERVATION 3 */}
 
-            {/* Reservation 3 */}
             <div className="reservation-row">
-
               <div className="reservation-icon">
                 🌯
               </div>
@@ -308,57 +358,108 @@ function ReserverDashboard() {
               <span className="reservation-status collected">
                 Collected
               </span>
-
             </div>
+          </div>
+        </section>
 
+        {/* =====================================================
+            QUICK ACTIONS
+        ===================================================== */}
+
+        <section className="dashboard-card quick-actions-card">
+          <div className="dashboard-card-heading">
+            <div>
+              <span className="card-eyebrow">
+                MAKE A DIFFERENCE
+              </span>
+
+              <h2>
+                Quick actions
+              </h2>
+            </div>
           </div>
 
+          <div className="quick-actions">
+
+            {/* FIND A MEAL */}
+
+            <button
+              type="button"
+              className="quick-action"
+              onClick={handleFindMeal}
+            >
+              <span className="quick-action-icon">
+                ⌕
+              </span>
+
+              <span className="quick-action-content">
+                <strong>
+                  Find a meal
+                </strong>
+
+                <small>
+                  Discover rescued food near you
+                </small>
+              </span>
+
+              <span className="quick-action-arrow">
+                →
+              </span>
+            </button>
+
+            {/* SAVED MEALS */}
+
+            <button
+              type="button"
+              className="quick-action"
+              onClick={handleSavedMeals}
+            >
+              <span className="quick-action-icon">
+                ♡
+              </span>
+
+              <span className="quick-action-content">
+                <strong>
+                  Saved meals
+                </strong>
+
+                <small>
+                  View your favorite meals
+                </small>
+              </span>
+
+              <span className="quick-action-arrow">
+                →
+              </span>
+            </button>
+
+            {/* MY IMPACT */}
+
+            <button
+              type="button"
+              className="quick-action"
+              onClick={handleMyImpact}
+            >
+              <span className="quick-action-icon">
+                ◉
+              </span>
+
+              <span className="quick-action-content">
+                <strong>
+                  My impact
+                </strong>
+
+                <small>
+                  See your food rescue journey
+                </small>
+              </span>
+
+              <span className="quick-action-arrow">
+                →
+              </span>
+            </button>
+          </div>
         </section>
-<section className="dashboard-card quick-actions-card">
-  <div className="dashboard-card-heading">
-    <div>
-      <span className="card-eyebrow">MAKE A DIFFERENCE</span>
-      <h2>Quick actions</h2>
-    </div>
-  </div>
-
-  <div className="quick-actions">
-
-    <button className="quick-action">
-      <span className="quick-action-icon">⌕</span>
-
-      <span className="quick-action-content">
-        <strong>Find a meal</strong>
-        <small>Discover rescued food near you</small>
-      </span>
-
-      <span className="quick-action-arrow">→</span>
-    </button>
-
-    <button className="quick-action">
-      <span className="quick-action-icon">♡</span>
-
-      <span className="quick-action-content">
-        <strong>Saved meals</strong>
-        <small>View your favorite meals</small>
-      </span>
-
-      <span className="quick-action-arrow">→</span>
-    </button>
-
-    <button className="quick-action">
-      <span className="quick-action-icon">◉</span>
-
-      <span className="quick-action-content">
-        <strong>My impact</strong>
-        <small>See your food rescue journey</small>
-      </span>
-
-      <span className="quick-action-arrow">→</span>
-    </button>
-
-  </div>
-</section>
 
       </div>
     </div>

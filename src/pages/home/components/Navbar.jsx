@@ -196,9 +196,7 @@ function Navbar() {
             <button
               type="button"
               className="login-button"
-              onClick={() => {
-                alert("Login page will be connected here.");
-              }}
+              onClick={() => navigate("/login")}
               style={{
                 ...buttonStyle,
                 border: "1px solid rgba(81, 32, 42, 0.2)",
@@ -215,9 +213,7 @@ function Navbar() {
             <button
               type="button"
               className="signup-button"
-              onClick={() => {
-                alert("Sign Up page will be connected here.");
-              }}
+              onClick={() => navigate("/signup")}
               style={{
                 ...buttonStyle,
                 border: "1px solid rgba(81, 32, 42, 0.2)",

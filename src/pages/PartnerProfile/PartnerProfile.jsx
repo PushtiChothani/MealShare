@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./PartnerProfile.css";
 
 const DEFAULT_PROFILE = {
@@ -15,6 +16,16 @@ const DEFAULT_PROFILE = {
 const PROFILE_STORAGE_KEY = "mealshare_partner_profile";
 
 function PartnerProfile() {
+    const navigate = useNavigate();
+
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+      return;
+    }
+
+    navigate("/food-lister-dashboard");
+  };
   const [profile, setProfile] = useState(() => {
     try {
       const savedProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
@@ -70,7 +81,15 @@ function PartnerProfile() {
 
   return (
     <main className="partner-profile-page">
+       <button
+      type="button"
+      className="partner-profile-back-button"
+      onClick={handleBack}
+    >
+      ← Back
+    </button>
       <section className="partner-profile-header">
+       
         <div>
           <p className="partner-profile-eyebrow">
             Partner Dashboard

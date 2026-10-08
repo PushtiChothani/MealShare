@@ -155,7 +155,14 @@ function normalizeListing(listing) {
 
 function ManageListings() {
   const navigate = useNavigate();
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+      return;
+    }
 
+    navigate("/food-lister-dashboard");
+  };
   const [
     listings,
     setListings,
@@ -428,6 +435,13 @@ function ManageListings() {
     <main className="manage-listings-page">
 
       <div className="manage-listings-container">
+        <button
+        type="button"
+        className="manage-listings-back-button"
+        onClick={handleBack}
+      >
+        ← Back
+      </button>
 
         {/* =================================================
             BREADCRUMB
