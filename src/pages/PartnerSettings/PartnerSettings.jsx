@@ -1,15 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./PartnerSettings.css";
 
+const DEFAULT_SETTINGS = {
+  emailNotifications: true,
+  reservationNotifications: true,
+  listingUpdates: true,
+  weeklySummary: false,
+};
+
+const SETTINGS_STORAGE_KEY = "mealshare_partner_settings";
+
 function PartnerSettings() {
-  const [settings, setSettings] = useState({
-    emailNotifications: true,
-    reservationNotifications: true,
-    listingUpdates: true,
-    weeklySummary: false,
+  const navigate = useNavigate();
+
+  const [settings, setSettings] = useState(() => {
+    try {
+      const savedSettings = localStorage.getItem(
+        SETTINGS_STORAGE_KEY
+      );
+
+      if (savedSettings) {
+        return JSON.parse(savedSettings);
+      }
+    } catch (error) {
+      console.error("Unable to load partner settings:", error);
+    }
+
+    return DEFAULT_SETTINGS;
   });
 
   const [saved, setSaved] = useState(false);
+
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+      return;
+    }
+
+    navigate("/food-lister-dashboard");
+  };
 
   const handleToggle = (name) => {
     setSettings((current) => ({
@@ -21,11 +51,28 @@ function PartnerSettings() {
   };
 
   const handleSave = () => {
-    setSaved(true);
+    try {
+      localStorage.setItem(
+        SETTINGS_STORAGE_KEY,
+        JSON.stringify(settings)
+      );
+
+      setSaved(true);
+    } catch (error) {
+      console.error("Unable to save partner settings:", error);
+    }
   };
 
   return (
     <main className="partner-settings-page">
+      <button
+        type="button"
+        className="partner-settings-back-button"
+        onClick={handleBack}
+      >
+        ← Back
+      </button>
+
       <section className="partner-settings-header">
         <div>
           <p className="partner-settings-eyebrow">
@@ -74,7 +121,9 @@ function PartnerSettings() {
             <div className="partner-setting-row">
               <div>
                 <h3>Reservation Notifications</h3>
-                <p>Get notified when a customer makes a reservation.</p>
+                <p>
+                  Get notified when a customer makes a reservation.
+                </p>
               </div>
 
               <button
@@ -114,7 +163,9 @@ function PartnerSettings() {
             <div className="partner-setting-row">
               <div>
                 <h3>Weekly Summary</h3>
-                <p>Receive a weekly summary of your MealShare activity.</p>
+                <p>
+                  Receive a weekly summary of your MealShare activity.
+                </p>
               </div>
 
               <button

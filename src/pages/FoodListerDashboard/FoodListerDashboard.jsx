@@ -12,22 +12,41 @@ import {
 
 } from "react-router-dom";
 
+import AccountMenu from "../../components/AccountMenu";
+import { useAuth } from "../../context/AuthContext";
+
 import {
+
   ArrowRight,
+
   BarChart3,
+
   Bell,
+
   CalendarCheck2,
+
   ChevronDown,
+
   ClipboardList,
+
   Clock3,
+
   Heart,
+
   Plus,
+
   Search,
+
   Settings,
+
   ShoppingCart,
+
   Sparkles,
+
   UserRound,
+
   X,
+
 } from "lucide-react";
 
 import "./FoodListerDashboard.css";
@@ -37,6 +56,12 @@ import {
   getListings,
 
 } from "../../data/listings";
+
+import {
+
+  getReservationsForProvider,
+
+} from "../../data/reservations";
 
 const statCards = [
 
@@ -234,18 +259,28 @@ const activities = [
 
 ];
 
-
 const trendData = {
+
   "This Week": {
+
     total: 18,
+
     change: "20%",
+
     values: [5, 7, 10, 12, 15, 10, 7],
+
   },
+
   "Last Week": {
+
     total: 15,
+
     change: "8%",
+
     values: [4, 6, 8, 10, 12, 9, 6],
+
   },
+
 };
 
 function FoodListerDashboard() {
@@ -253,6 +288,8 @@ function FoodListerDashboard() {
   const navigate =
 
     useNavigate();
+
+  const { user } = useAuth();
 
   const [
 
@@ -285,6 +322,24 @@ function FoodListerDashboard() {
     setNotificationsOpen,
 
   ] = useState(false);
+
+  const [
+
+    reservations,
+
+    setReservations,
+
+  ] = useState(() => {
+
+    if (!user?.name) {
+
+      return [];
+
+    }
+
+    return getReservationsForProvider(user.name);
+
+  });
 
   const [
 
@@ -357,6 +412,94 @@ function FoodListerDashboard() {
     };
 
   }, []);
+
+  useEffect(() => {
+
+    const refreshReservations = () => {
+
+      if (!user?.name) {
+
+        setReservations([]);
+
+        return;
+
+      }
+
+      setReservations(
+
+        getReservationsForProvider(user.name)
+
+      );
+
+    };
+
+    refreshReservations();
+
+    window.addEventListener(
+
+      "storage",
+
+      refreshReservations
+
+    );
+
+    window.addEventListener(
+
+      "mealshare:reservations-updated",
+
+      refreshReservations
+
+    );
+
+    return () => {
+
+      window.removeEventListener(
+
+        "storage",
+
+        refreshReservations
+
+      );
+
+      window.removeEventListener(
+
+        "mealshare:reservations-updated",
+
+        refreshReservations
+
+      );
+
+    };
+
+  }, [user?.name]);
+
+  const reservationNotifications = reservations
+
+    .slice()
+
+    .reverse()
+
+    .map((reservation) => ({
+
+      id: reservation.id,
+
+      title: "New reservation received",
+
+      subtitle: `${reservation.userName} reserved ${
+
+        reservation.quantity
+
+      } ${
+
+        reservation.quantity === 1
+
+          ? "meal"
+
+          : "meals"
+
+      } — ${reservation.mealName}`,
+
+    }));
 
   const displayListings =
 
@@ -484,7 +627,6 @@ function FoodListerDashboard() {
 
         );
 
-
   const currentTrend = trendData[trendPeriod];
 
   return (
@@ -508,125 +650,251 @@ function FoodListerDashboard() {
         <header className="food-lister-topbar">
 
           <div className="food-lister-welcome">
+
             <span>Welcome back,</span>
 
             <h1>
+
               The Green Bowl
+
               <i aria-hidden="true">⌁</i>
+
             </h1>
 
             <p>Share good food. Create real impact in Vadodara.</p>
+
           </div>
 
           <div className="food-lister-topbar-actions">
+
             <label className="food-lister-search">
+
               <Search size={18} strokeWidth={2} aria-hidden="true" />
+
               <input
+
                 type="text"
+
                 placeholder="Search listings, reservations..."
+
                 aria-label="Search listings and reservations"
+
               />
+
             </label>
 
             <div className="food-lister-notification-wrap">
+
               <button
+
                 type="button"
+
                 className="food-lister-notification"
+
                 aria-label="Notifications"
+
                 aria-expanded={notificationsOpen}
+
                 onClick={() => setNotificationsOpen((open) => !open)}
+
               >
+
                 <Bell size={20} strokeWidth={2} aria-hidden="true" />
+
                 <span className="food-lister-notification-dot" />
+
               </button>
 
               {notificationsOpen && (
+
                 <div className="food-lister-notification-panel">
+
                   <div className="food-lister-notification-header">
+
                     <div>
+
                       <strong>Notifications</strong>
-                      <span>3 new updates</span>
+
+                      <span>
+
+                      {reservationNotifications.length} {
+
+                        reservationNotifications.length === 1
+
+                          ? "new update"
+
+                          : "new updates"
+
+                      }
+
+                    </span>
+
                     </div>
+
                     <button
+
                       type="button"
+
                       aria-label="Close notifications"
+
                       onClick={() => setNotificationsOpen(false)}
+
                     >
+
                       <X size={17} />
+
                     </button>
+
                   </div>
 
                   <div className="food-lister-notification-list">
-                    <button
-                      type="button"
-                      className="food-lister-notification-item"
-                      onClick={() => navigate("/reservations")}
-                    >
-                      <span className="notification-item-icon reservation">
-                        <CalendarCheck2 size={17} />
-                      </span>
-                      <span>
-                        <strong>New reservation received</strong>
-                        <small>A student reserved 2 meals.</small>
-                      </span>
-                    </button>
+
+                    {reservationNotifications.length > 0 ? (
+
+                      reservationNotifications.map((notification) => (
+
+                        <button
+
+                          key={notification.id}
+
+                          type="button"
+
+                          className="food-lister-notification-item"
+
+                          onClick={() => navigate("/reservations")}
+
+                        >
+
+                          <span className="notification-item-icon reservation">
+
+                            <CalendarCheck2 size={17} />
+
+                          </span>
+
+                          <span>
+
+                            <strong>
+
+                              {notification.title}
+
+                            </strong>
+
+                            <small>
+
+                              {notification.subtitle}
+
+                            </small>
+
+                          </span>
+
+                        </button>
+
+                      ))
+
+                    ) : (
+
+                      <div className="food-lister-notification-item">
+
+                        <span className="notification-item-icon reservation">
+
+                          <CalendarCheck2 size={17} />
+
+                        </span>
+
+                        <span>
+
+                          <strong>No new reservations</strong>
+
+                          <small>
+
+                            New reservations will appear here.
+
+                          </small>
+
+                        </span>
+
+                      </div>
+
+                    )}
 
                     <button
+
                       type="button"
+
                       className="food-lister-notification-item"
+
                       onClick={() => navigate("/manage-listings")}
+
                     >
+
                       <span className="notification-item-icon listing">
+
                         <ClipboardList size={17} />
+
                       </span>
+
                       <span>
+
                         <strong>Listing is getting attention</strong>
+
                         <small>Your active listings are being viewed.</small>
+
                       </span>
+
                     </button>
 
                     <button
+
                       type="button"
+
                       className="food-lister-notification-item"
+
                       onClick={() => navigate("/partner-settings")}
+
                     >
+
                       <span className="notification-item-icon update">
+
                         <Settings size={17} />
+
                       </span>
+
                       <span>
+
                         <strong>Weekly summary is ready</strong>
+
                         <small>Review your latest rescue activity.</small>
+
                       </span>
+
                     </button>
+
                   </div>
 
                   <button
+
                     type="button"
+
                     className="food-lister-notification-footer"
+
                     onClick={() => setNotificationsOpen(false)}
+
                   >
+
                     Mark all as read
+
                   </button>
+
                 </div>
+
               )}
+
             </div>
 
-            <button
-              type="button"
-              className="food-lister-partner-profile"
-              onClick={() => navigate("/partner-profile")}
-              aria-label="Open partner profile"
-            >
-              <div className="food-lister-partner-avatar">GB</div>
+            <AccountMenu showSettings />
 
-              <div>
-                <strong>The Green Bowl</strong>
-                <small>Restaurant Partner</small>
-              </div>
-
-              <ChevronDown size={18} strokeWidth={2} aria-hidden="true" />
-            </button>
           </div>
+
         </header>
 
         {/* ===================================================
@@ -1124,112 +1392,199 @@ function FoodListerDashboard() {
             {/* QUICK ACTIONS */}
 
             <article className="food-lister-side-card quick-actions-card">
+
               <div className="food-lister-side-heading quick-actions-heading">
+
                 <span>
+
                   <Sparkles size={18} strokeWidth={2} />
+
                 </span>
+
                 <h2>Quick Actions</h2>
+
               </div>
 
               <button
+
                 type="button"
+
                 className="food-lister-create-button"
+
                 onClick={() => navigate("/create-listing")}
+
               >
+
                 <span><Plus size={19} strokeWidth={2.5} /></span>
+
                 Create a New Listing
+
                 <b><ArrowRight size={18} strokeWidth={2} /></b>
+
               </button>
 
               <button
+
                 type="button"
+
                 className="food-lister-manage-button"
+
                 onClick={() => navigate("/manage-listings")}
+
               >
+
                 <span><ClipboardList size={18} strokeWidth={2} /></span>
+
                 Manage My Listings
+
                 <b><ArrowRight size={18} strokeWidth={2} /></b>
+
               </button>
 
               <button
+
                 type="button"
+
                 className="food-lister-manage-button"
+
                 onClick={() => navigate("/reservations")}
+
               >
+
                 <span><CalendarCheck2 size={18} strokeWidth={2} /></span>
+
                 Manage Reservations
+
                 <b><ArrowRight size={18} strokeWidth={2} /></b>
+
               </button>
 
               <button
+
                 type="button"
+
                 className="food-lister-manage-button"
+
                 onClick={() => navigate("/partner-profile")}
+
               >
+
                 <span><UserRound size={18} strokeWidth={2} /></span>
+
                 Partner Profile
+
                 <b><ArrowRight size={18} strokeWidth={2} /></b>
+
               </button>
 
               <button
+
                 type="button"
+
                 className="food-lister-manage-button"
+
                 onClick={() => navigate("/partner-settings")}
+
               >
+
                 <span><Settings size={18} strokeWidth={2} /></span>
+
                 Partner Settings
+
                 <b><ArrowRight size={18} strokeWidth={2} /></b>
+
               </button>
+
             </article>
 
             {/* WEEKLY TREND */}
 
             <article className="food-lister-side-card trend-card">
+
               <div className="food-lister-side-heading">
+
                 <div>
+
                   <span><BarChart3 size={18} strokeWidth={2} /></span>
+
                   <h2>Weekly Rescue Trend</h2>
+
                 </div>
 
                 <button
+
                   type="button"
+
                   className="trend-period-button"
+
                   onClick={() =>
+
                     setTrendPeriod((period) =>
+
                       period === "This Week" ? "Last Week" : "This Week"
+
                     )
+
                   }
+
                   aria-label={`Showing ${trendPeriod}. Click to switch period.`}
+
                 >
+
                   {trendPeriod}
+
                   <ChevronDown size={15} strokeWidth={2} />
+
                 </button>
+
               </div>
 
               <div className="food-lister-trend-summary">
+
                 <strong>{currentTrend.total}</strong>
+
                 <div>
+
                   <span>Meals Rescued</span>
+
                   <b>↑ {currentTrend.change} from last week</b>
+
                 </div>
+
               </div>
 
               <div className="food-lister-chart">
+
                 {currentTrend.values.map((value, index) => (
+
                   <div
+
                     className="food-lister-chart-column"
+
                     key={index}
+
                   >
+
                     <div
+
                       className="food-lister-chart-bar"
+
                       style={{ height: `${value * 5}px` }}
+
                     />
+
                     <span>
+
                       {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][index]}
+
                     </span>
+
                   </div>
+
                 ))}
+
               </div>
+
             </article>
 
             {/* RECENT ACTIVITY */}

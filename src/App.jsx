@@ -34,9 +34,22 @@ import Login from "./pages/Login";
 
 import Signup from "./pages/Signup";
 
+import {
+  AuthProvider,
+  getDashboardPath,
+  useAuth,
+} from "./context/AuthContext";
+
+import ProtectedRoute from "./context/ProtectedRoute";
+
 function AppLayout() {
 
   const navigate = useNavigate();
+
+  const {
+    user,
+    isAuthenticated,
+  } = useAuth();
 
   return (
 
@@ -271,6 +284,7 @@ function AppLayout() {
         }
 
         .mealshare-navbar-login,
+
         .mealshare-navbar-signup {
 
           border: 1px solid rgba(81, 32, 42, 0.2) !important;
@@ -282,6 +296,7 @@ function AppLayout() {
         }
 
         .mealshare-navbar-login:hover,
+
         .mealshare-navbar-signup:hover {
 
           background: rgba(125, 31, 42, 0.05) !important;
@@ -478,57 +493,41 @@ function AppLayout() {
 
             <div className="mealshare-navbar-actions">
 
-{/* Login */}
+              {!isAuthenticated ? (
+                <>
+                  {/* Login */}
 
-              <button
+                  <button
+                    type="button"
+                    className="mealshare-navbar-button mealshare-navbar-login"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </button>
 
-                type="button"
+                  {/* Sign Up */}
 
-                className="mealshare-navbar-button mealshare-navbar-login"
+                  <button
+                    type="button"
+                    className="mealshare-navbar-button mealshare-navbar-signup"
+                    onClick={() => navigate("/signup")}
+                  >
+                    Sign Up
+                  </button>
+                </>
+              ) : (
+                /* Dashboard */
 
-                onClick={() => navigate("/login")}
-
-              >
-
-                Login
-
-              </button>
-
-              {/* Sign Up */}
-
-              <button
-
-                type="button"
-
-                className="mealshare-navbar-button mealshare-navbar-signup"
-
-                onClick={() => navigate("/signup")}
-
-              >
-
-                Sign Up
-
-              </button>
-
-              {/* Dashboard */}
-
-              <button
-
-                type="button"
-
-                className="mealshare-navbar-button mealshare-navbar-dashboard"
-
-                onClick={() =>
-
-                  navigate("/food-lister-dashboard")
-
-                }
-
-              >
-
-                Dashboard
-
-              </button>
+                <button
+                  type="button"
+                  className="mealshare-navbar-button mealshare-navbar-dashboard"
+                  onClick={() =>
+                    navigate(getDashboardPath(user.role))
+                  }
+                >
+                  Dashboard
+                </button>
+              )}
 
             </div>
 
@@ -559,71 +558,78 @@ function AppLayout() {
         {/* Reserver Dashboard */}
 
         <Route
-
           path="/reserver-dashboard"
-
-          element={<ReserverDashboard />}
-
+          element={
+            <ProtectedRoute allowedRole="reserver">
+              <ReserverDashboard />
+            </ProtectedRoute>
+          }
         />
 
         {/* Food Lister Dashboard */}
 
         <Route
-
           path="/food-lister-dashboard"
-
-          element={<FoodListerDashboard />}
-
+          element={
+            <ProtectedRoute allowedRole="food-lister">
+              <FoodListerDashboard />
+            </ProtectedRoute>
+          }
         />
 
         {/* Create Listing */}
 
         <Route
-
           path="/create-listing"
-
-          element={<CreateListing />}
-
+          element={
+            <ProtectedRoute allowedRole="food-lister">
+              <CreateListing />
+            </ProtectedRoute>
+          }
         />
 
         {/* Manage Listings */}
 
         <Route
-
           path="/manage-listings"
-
-          element={<ManageListings />}
-
+          element={
+            <ProtectedRoute allowedRole="food-lister">
+              <ManageListings />
+            </ProtectedRoute>
+          }
         />
 
         {/* Reservations */}
 
         <Route
-
           path="/reservations"
-
-          element={<Reservations />}
-
+          element={
+            <ProtectedRoute allowedRole="food-lister">
+              <Reservations />
+            </ProtectedRoute>
+          }
         />
 
         {/* Partner Profile */}
 
         <Route
-
           path="/partner-profile"
-
-          element={<PartnerProfile />}
-
+          element={
+            <ProtectedRoute allowedRole="food-lister">
+              <PartnerProfile />
+            </ProtectedRoute>
+          }
         />
 
         {/* Partner Settings */}
 
         <Route
-
           path="/partner-settings"
-
-          element={<PartnerSettings />}
-
+          element={
+            <ProtectedRoute allowedRole="food-lister">
+              <PartnerSettings />
+            </ProtectedRoute>
+          }
         />
 
         {/* Meals */}
@@ -667,13 +673,11 @@ function AppLayout() {
 function App() {
 
   return (
-
-    <BrowserRouter>
-
-      <AppLayout />
-
-    </BrowserRouter>
-
+    <AuthProvider>
+      <BrowserRouter>
+        <AppLayout />
+      </BrowserRouter>
+    </AuthProvider>
   );
 
 }
