@@ -1,9 +1,24 @@
+import { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useAuth, getDashboardPath } from "../../../context/AuthContext";
 import "../navbar.css";
 
 function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const linkStyle = {
     color: "#51202a",
@@ -34,7 +49,7 @@ function Navbar() {
 
   return (
     <header
-      className="navbar"
+      className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}
       style={{
         position: "relative",
         zIndex: 1000,
@@ -59,15 +74,13 @@ function Navbar() {
           boxSizing: "border-box",
         }}
       >
-
         {/* =====================================================
             LOGO — FAR LEFT
         ===================================================== */}
-
         <button
           type="button"
           className="navbar-logo"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/home")}
           style={{
             flex: "0 0 auto",
             display: "inline-flex",
@@ -99,15 +112,12 @@ function Navbar() {
           >
             ⌁
           </span>
-
           <span>MealShare</span>
         </button>
-
 
         {/* =====================================================
             ALL NAVIGATION — FAR RIGHT
         ===================================================== */}
-
         <nav
           className="navbar-right"
           style={{
@@ -122,9 +132,7 @@ function Navbar() {
             flex: "0 0 auto",
           }}
         >
-
           {/* MAIN LINKS */}
-
           <div
             className="navbar-links"
             style={{
@@ -138,9 +146,11 @@ function Navbar() {
               flex: "0 0 auto",
             }}
           >
-
             <NavLink
-              to="/"
+              to="/home"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
               style={({ isActive }) => ({
                 ...linkStyle,
                 color: isActive ? "#7d1f2a" : "#51202a",
@@ -152,6 +162,9 @@ function Navbar() {
 
             <NavLink
               to="/meals"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
               style={({ isActive }) => ({
                 ...linkStyle,
                 color: isActive ? "#7d1f2a" : "#51202a",
@@ -163,6 +176,9 @@ function Navbar() {
 
             <NavLink
               to="/about"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
               style={({ isActive }) => ({
                 ...linkStyle,
                 color: isActive ? "#7d1f2a" : "#51202a",
@@ -171,12 +187,9 @@ function Navbar() {
             >
               About Us
             </NavLink>
-
           </div>
 
-
           {/* ACTION BUTTONS */}
-
           <div
             className="navbar-actions"
             style={{
@@ -190,64 +203,56 @@ function Navbar() {
               flex: "0 0 auto",
             }}
           >
+            {!isAuthenticated ? (
+              <>
+                <button
+                  type="button"
+                  className="login-button"
+                  onClick={() => navigate("/login")}
+                  style={{
+                    ...buttonStyle,
+                    border: "1px solid rgba(81, 32, 42, 0.2)",
+                    background: "transparent",
+                    color: "#51202a",
+                  }}
+                >
+                  Login
+                </button>
 
-            {/* LOGIN */}
-
-            <button
-              type="button"
-              className="login-button"
-              onClick={() => navigate("/login")}
-              style={{
-                ...buttonStyle,
-                border: "1px solid rgba(81, 32, 42, 0.2)",
-                background: "transparent",
-                color: "#51202a",
-              }}
-            >
-              Login
-            </button>
-
-
-            {/* SIGN UP */}
-
-            <button
-              type="button"
-              className="signup-button"
-              onClick={() => navigate("/signup")}
-              style={{
-                ...buttonStyle,
-                border: "1px solid rgba(81, 32, 42, 0.2)",
-                background: "transparent",
-                color: "#51202a",
-              }}
-            >
-              Sign Up
-            </button>
-
-
-            {/* DASHBOARD */}
-
-            <button
-              type="button"
-              className="dashboard-button"
-              onClick={() => navigate("/food-lister-dashboard")}
-              style={{
-                ...buttonStyle,
-                minWidth: "125px",
-                border: "1px solid #7d1f2a",
-                background: "#7d1f2a",
-                color: "#ffffff",
-                paddingLeft: "28px",
-                paddingRight: "28px",
-              }}
-            >
-              Dashboard
-            </button>
-
+                <button
+                  type="button"
+                  className="signup-button"
+                  onClick={() => navigate("/signup")}
+                  style={{
+                    ...buttonStyle,
+                    border: "1px solid rgba(81, 32, 42, 0.2)",
+                    background: "transparent",
+                    color: "#51202a",
+                  }}
+                >
+                  Sign Up
+                </button>
+              </>
+            ) : (
+              <button
+                type="button"
+                className="dashboard-button"
+                onClick={() => navigate(getDashboardPath(user?.role))}
+                style={{
+                  ...buttonStyle,
+                  minWidth: "125px",
+                  border: "1px solid #7d1f2a",
+                  background: "#7d1f2a",
+                  color: "#ffffff",
+                  paddingLeft: "28px",
+                  paddingRight: "28px",
+                }}
+              >
+                Dashboard
+              </button>
+            )}
           </div>
-
         </nav>
-
       </div>
     </header>
   );
