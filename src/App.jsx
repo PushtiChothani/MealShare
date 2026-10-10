@@ -2,7 +2,6 @@ import {
   BrowserRouter,
   Route,
   Routes,
-  useLocation,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { AuthProvider } from "./context/AuthContext";
@@ -22,11 +21,9 @@ import ReserverDashboard from "./pages/ReserverDashboard/ReserverDashboard";
 import Signup from "./pages/Signup";
 
 function AppContent() {
-  const location = useLocation();
-
   return (
     <>
-      {location.pathname !== "/" && <Navbar />}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
