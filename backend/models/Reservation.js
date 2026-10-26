@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 
+/**
+ * Reservation item snapshot schema representing a reserved meal item.
+ * Preserves historical price, title, and quantity at the time of reservation.
+ */
 const reservationItemSchema = new mongoose.Schema(
   {
     mealId: {
@@ -44,6 +48,10 @@ const reservationItemSchema = new mongoose.Schema(
   { _id: false }
 );
 
+/**
+ * Reservation schema tracking customer orders and pickup lifecycle status.
+ * Valid statuses: 'Pending', 'Confirmed', 'Picked Up', 'Cancelled'.
+ */
 const reservationSchema = new mongoose.Schema(
   {
     customerId: {

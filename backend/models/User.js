@@ -1,6 +1,10 @@
 
 const mongoose = require("mongoose");
 
+/**
+ * User schema supporting both standard password authentication and Google OAuth.
+ * Roles: 'food-lister' (restaurants/donors) and 'reserver' (customers/volunteers).
+ */
 const userSchema = new mongoose.Schema(
   {
     name: {

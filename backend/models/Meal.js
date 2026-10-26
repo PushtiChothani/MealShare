@@ -1,6 +1,10 @@
 
 const mongoose = require("mongoose");
 
+/**
+ * Meal Schema represents surplus food listings published by food-listers.
+ * Includes pricing, inventory counts, restaurant reference, and pickup metadata.
+ */
 const mealSchema = new mongoose.Schema(
   {
     title: {
