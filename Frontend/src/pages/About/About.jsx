@@ -1,3 +1,9 @@
+/**
+ * @file About.jsx
+ * @description MealShare "About Us" page component showcasing organization mission,
+ * core pillars (rescue, community, pickup, impact), sustainability statistics, and partner CTAs.
+ */
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./About.css";
@@ -164,6 +170,7 @@ const About = () => {
             <button
               className="about-primary-btn"
               onClick={() => navigate("/meals")}
+              aria-label="Find available meals near you"
             >
               FIND MEALS <span>→</span>
             </button>
@@ -582,6 +589,7 @@ const About = () => {
             <button
               className="cta-white-btn"
               onClick={() => navigate("/meals")}
+              aria-label="Find surplus meals"
             >
               FIND MEALS →
             </button>
@@ -589,6 +597,7 @@ const About = () => {
             <button
               className="cta-outline-btn"
               onClick={() => navigate("/signup")}
+              aria-label="Get started and create a MealShare account"
             >
               GET STARTED →
             </button>
