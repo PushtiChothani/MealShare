@@ -393,6 +393,13 @@
   font-weight: 700;
   box-shadow: 0 4px 14px rgba(50,30,25,.12);
   white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mealshare-map-marker {
+  background: transparent !important;
+  border: none !important;
 }
 
 /* Error */

@@ -245,6 +245,8 @@ function ManageListings() {
           price: listing.price,
           oldPrice: listing.originalPrice,
           business: listing.restaurantName,
+          address: listing.address,
+          position: listing.position,
         },
       },
     });

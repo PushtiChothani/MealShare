@@ -72,6 +72,11 @@ const mealSchema = new mongoose.Schema(
       trim: true,
     },
 
+    position: {
+      type: [Number],
+      default: [22.3072, 73.1812],
+    },
+
     phone: {
       type: String,
       default: "",

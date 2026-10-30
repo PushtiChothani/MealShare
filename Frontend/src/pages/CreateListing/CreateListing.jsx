@@ -1,25 +1,82 @@
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
   CircleMarker,
+  Marker,
+  Popup,
+  useMap,
   useMapEvents,
 } from "react-leaflet";
+import L from "leaflet";
 
 import "leaflet/dist/leaflet.css";
 import "./CreateListing.css";
 import { useAuth } from "../../context/AuthContext";
 import { API_ENDPOINTS } from "../../config/api";
+import { saveListing } from "../../data/listings";
 
 const API_URL = API_ENDPOINTS.MEALS;
 const DEFAULT_LOCATION = [22.3072, 73.1812];
 
-function MapClickHandler({ onSelect }) {
+const customPinIcon = L.divIcon({
+  className: "mealshare-map-marker",
+  html: `<div style="
+    position: relative;
+    width: 28px;
+    height: 28px;
+    background: #8d1d2b;
+    border: 2px solid #ffffff;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+    cursor: grab;
+  ">
+    <div style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      margin: -4px 0 0 -4px;
+      background: #ffffff;
+      border-radius: 50%;
+    "></div>
+  </div>`,
+  iconSize: [28, 28],
+  iconAnchor: [14, 28],
+  popupAnchor: [0, -28],
+});
+
+function MapController({ center }) {
+  const map = useMap();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      map.invalidateSize();
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [map]);
+
+  useEffect(() => {
+    if (center && Array.isArray(center) && center.length === 2) {
+      map.panTo(center, { animate: true });
+    }
+  }, [center, map]);
+
+  return null;
+}
+
+function MapClickHandler({ onSelect, onReverseGeocode }) {
   useMapEvents({
     click(event) {
-      onSelect([event.latlng.lat, event.latlng.lng]);
+      const coords = [event.latlng.lat, event.latlng.lng];
+      onSelect(coords);
+      if (onReverseGeocode) {
+        onReverseGeocode(coords);
+      }
     },
   });
 
@@ -71,6 +128,78 @@ function CreateListing() {
   const [photo, setPhoto] = useState(editingListing?.image || "");
   const [isPublishing, setIsPublishing] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const handleReverseGeocode = useCallback(async (coords) => {
+    if (!coords || coords.length !== 2) return;
+    try {
+      const [lat, lng] = coords;
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`,
+        {
+          headers: {
+            "Accept-Language": "en",
+          },
+        }
+      );
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data && data.display_name) {
+        setAddress((current) => {
+          if (!current || !current.trim()) {
+            return data.display_name;
+          }
+          return current;
+        });
+      }
+    } catch {
+      // Ignore background network notice
+    }
+  }, []);
+
+  const markerEventHandlers = useMemo(
+    () => ({
+      dragend(event) {
+        const marker = event.target;
+        if (marker) {
+          const latlng = marker.getLatLng();
+          const coords = [latlng.lat, latlng.lng];
+          setSelectedLocation(coords);
+          handleReverseGeocode(coords);
+        }
+      },
+    }),
+    [handleReverseGeocode]
+  );
+
+  // Auto-geocode address when entered if no pin has been selected yet
+  useEffect(() => {
+    if (!address || !address.trim() || selectedLocation) return;
+
+    const timer = setTimeout(async () => {
+      try {
+        const query = encodeURIComponent(`${address.trim()}`);
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1`,
+          {
+            headers: {
+              "Accept-Language": "en",
+            },
+          }
+        );
+        if (!res.ok) return;
+        const results = await res.json();
+        if (results && results.length > 0) {
+          const lat = parseFloat(results[0].lat);
+          const lon = parseFloat(results[0].lon);
+          setSelectedLocation([lat, lon]);
+        }
+      } catch {
+        // Fallback silently
+      }
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, [address, selectedLocation]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -236,6 +365,7 @@ function CreateListing() {
       business: restaurantName.trim(),
       restaurantId: userId,
       address: address.trim(),
+      position: selectedLocation || DEFAULT_LOCATION,
       phone: user.phone || user.contactNumber || "",
       pickupTime: `${pickupDate} · ${pickupTime}`,
     };
@@ -263,6 +393,18 @@ function CreateListing() {
         throw new Error(
           result.message || "Could not save the meal to MongoDB."
         );
+      }
+
+      if (result.meal) {
+        saveListing({
+          ...result.meal,
+          id: result.meal._id || result.meal.id,
+          name: result.meal.title,
+          mealsLeft: result.meal.quantity,
+          position: result.meal.position || listing.position,
+          business: result.meal.business,
+          address: result.meal.address,
+        });
       }
 
       window.dispatchEvent(new CustomEvent("mealshare:listings-updated"));
@@ -588,26 +730,48 @@ function CreateListing() {
                   <MapContainer
                     center={selectedLocation || DEFAULT_LOCATION}
                     zoom={14}
-                    scrollWheelZoom={false}
+                    scrollWheelZoom={true}
                     zoomControl
                     style={{ height: "100%", width: "100%" }}
                   >
                     <TileLayer
-                      attribution="&copy; OpenStreetMap contributors"
+                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <MapClickHandler onSelect={setSelectedLocation} />
+                    <MapController center={selectedLocation} />
+                    <MapClickHandler
+                      onSelect={setSelectedLocation}
+                      onReverseGeocode={handleReverseGeocode}
+                    />
                     {selectedLocation && (
-                      <CircleMarker
-                        center={selectedLocation}
-                        radius={10}
-                        pathOptions={{
-                          color: "#7d1f2a",
-                          fillColor: "#ef5361",
-                          fillOpacity: 0.9,
-                          weight: 3,
-                        }}
-                      />
+                      <>
+                        <CircleMarker
+                          center={selectedLocation}
+                          radius={16}
+                          pathOptions={{
+                            color: "#8d1d2b",
+                            fillColor: "#ef5361",
+                            fillOpacity: 0.25,
+                            weight: 2,
+                          }}
+                        />
+                        <Marker
+                          position={selectedLocation}
+                          icon={customPinIcon}
+                          draggable={true}
+                          eventHandlers={markerEventHandlers}
+                        >
+                          <Popup>
+                            <div style={{ textAlign: "center", fontSize: "11px", color: "#4b2026", fontWeight: "600", padding: "2px 4px" }}>
+                              <strong>{restaurantName || "Pickup Location"}</strong>
+                              <br />
+                              <span style={{ fontSize: "10px", color: "#777", fontWeight: "400" }}>
+                                {address || "Selected Location"}
+                              </span>
+                            </div>
+                          </Popup>
+                        </Marker>
+                      </>
                     )}
                   </MapContainer>
 

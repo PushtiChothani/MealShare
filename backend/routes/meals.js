@@ -89,6 +89,7 @@ router.post(
         quantity,
         business,
         address,
+        position,
         phone,
         pickupTime,
       } = req.body;
@@ -137,6 +138,10 @@ router.post(
         business: business.trim(),
         restaurantId: req.user.id,
         address,
+        position:
+          Array.isArray(position) && position.length === 2
+            ? position
+            : [22.3072, 73.1812],
         phone,
         pickupTime,
       });
@@ -193,6 +198,7 @@ router.put(
         quantity,
         business,
         address,
+        position,
         phone,
         pickupTime,
       } = req.body;
@@ -209,6 +215,9 @@ router.put(
       }
       if (business !== undefined) meal.business = business.trim();
       if (address !== undefined) meal.address = address ? address.trim() : "";
+      if (position !== undefined && Array.isArray(position) && position.length === 2) {
+        meal.position = position;
+      }
       if (phone !== undefined) meal.phone = phone || "";
       if (pickupTime !== undefined) meal.pickupTime = pickupTime || "";
 

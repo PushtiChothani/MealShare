@@ -61,6 +61,7 @@ function normalizeMeal(meal) {
     description: meal.description || "",
     pickupTime: meal.pickupTime || "Pickup time available",
     restaurantName: meal.business || "",
+    position: meal.position || null,
   };
 }
 
@@ -494,6 +495,8 @@ function FoodListerDashboard() {
           originalPrice: listing.oldPrice ?? listing.price,
           discountedPrice: listing.price,
           restaurantName: listing.restaurantName || restaurantName,
+          address: listing.address,
+          position: listing.position,
         },
       },
     });
